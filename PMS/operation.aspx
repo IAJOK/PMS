@@ -1,6 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="WebForm2.aspx.cs" Inherits="PMS.WebForm2" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="operation.aspx.cs" Inherits="PMS.operation" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
+
 
     .auto-style6 {
         text-decoration: none;
@@ -52,41 +53,34 @@
     <p>
         <table align="center" class="auto-style2">
             <tr>
-                <td class="auto-style4">查询员工信息
+                <td class="auto-style4">管理员工信息
         
                 </td>
-                <td class="auto-style4">查询部门信息
+                <td class="auto-style4">管理部门信息
         
     </td>
             </tr>
             <tr>
                 <td class="auto-style9">员工代号：<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-                    <asp:CheckBox ID="CheckBox1" runat="server" />
                 </td>
                 <td class="auto-style9">部门代号：<asp:TextBox ID="TextBox6" runat="server"></asp:TextBox>
-                    <asp:CheckBox ID="CheckBox5" runat="server" />
                 </td>
             </tr>
             <tr>
                 <td class="auto-style10">员工姓名：<asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
-                    <asp:CheckBox ID="CheckBox2" runat="server" />
                 </td>
                 <td class="auto-style10">部门名称：<asp:TextBox ID="TextBox7" runat="server"></asp:TextBox>
-                    <asp:CheckBox ID="CheckBox6" runat="server" />
                 </td>
             </tr>
             <tr>
                 <td class="auto-style9">所属部门：<asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
-                    <asp:CheckBox ID="CheckBox3" runat="server" />
                 </td>
                 <td class="auto-style9">部门主管：<asp:TextBox ID="TextBox8" runat="server"></asp:TextBox>
-                    <asp:CheckBox ID="CheckBox7" runat="server" />
                 </td>
             </tr>
             <tr>
                 <td class="auto-style8">&nbsp; 年龄：&nbsp;&nbsp;&nbsp;
                     <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
-                    <asp:CheckBox ID="CheckBox4" runat="server" />
                 </td>
                 <td class="auto-style7">&nbsp;&nbsp;</td>
             </tr>
@@ -98,8 +92,9 @@
             </tr>
             <tr>
                 <td class="auto-style3">
-                    <asp:Button ID="Button1" runat="server" Text="查询" />
-                    <asp:Button ID="Button2" runat="server" Text="打印" />
+                    <asp:Button ID="Button1" runat="server" Text="录入" />
+                    <asp:Button ID="Button2" runat="server" Text="删除" />
+                    <asp:Button ID="Button3" runat="server" Text="修改" />
                     <br />
                     <div class="auto-style12">
                         <asp:GridView ID="GridView1" runat="server" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" Width="332px">
@@ -107,8 +102,9 @@
                     </div>
                 </td>
                 &nbsp;<td class="auto-style11">
-                    <asp:Button ID="Button3" runat="server" Text="查询" />
-                    <asp:Button ID="Button4" runat="server" Text="打印" />
+                    <asp:Button ID="Button4" runat="server" Text="录入" />
+                    <asp:Button ID="Button5" runat="server" Text="删除" />
+                    <asp:Button ID="Button6" runat="server" Text="修改" />
                     <asp:GridView ID="GridView2" runat="server" Width="339px">
                     </asp:GridView>
                 </td>

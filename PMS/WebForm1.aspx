@@ -45,8 +45,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <p>
-         <A href="WebForm1.aspx" class="auto-style6"><span class="auto-style5">首页</span></A>&nbsp;&nbsp;         <A href="WebForm1.aspx" class="auto-style6"><span class="auto-style5">查询操作</span></A>&nbsp;&nbsp;      
-         <A href="WebForm1.aspx" class="auto-style6"><span class="auto-style5">修改密码</span></A>&nbsp;&nbsp;         <A href="WebForm1.aspx" class="auto-style6"><span class="auto-style5">关于</span></A>
+         <A href="Homepage.aspx" class="auto-style6"><span class="auto-style5">首页</span></A>&nbsp;&nbsp;         <A href="WebForm1.aspx" class="auto-style6"><span class="auto-style5">查询操作</span></A>&nbsp;&nbsp;      
+         <A href="ChangeKey1.aspx" class="auto-style6"><span class="auto-style5">修改密码</span></A>&nbsp;&nbsp;         <A href="about.aspx" class="auto-style6"><span class="auto-style5">关于</span></A>
         <hr />
     <p>
         <table align="center" class="auto-style2">
@@ -99,7 +99,7 @@
             <tr>
                 <td class="auto-style3">
                     <asp:Button ID="Button1" runat="server" Text="查询" />
-                    <asp:Button ID="Button6" runat="server" Text="打印" />
+                    <asp:Button ID="Button2" runat="server" Text="打印" />
                     <br />
                     <div class="auto-style12">
                         <asp:GridView ID="GridView1" runat="server" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" Width="332px">
@@ -107,8 +107,8 @@
                     </div>
                 </td>
                 &nbsp;<td class="auto-style11">
-                    <asp:Button ID="Button5" runat="server" Text="查询" />
-                    <asp:Button ID="Button7" runat="server" Text="打印" />
+                    <asp:Button ID="Button3" runat="server" Text="查询" />
+                    <asp:Button ID="Button4" runat="server" Text="打印" />
                     <asp:GridView ID="GridView2" runat="server" Width="339px">
                     </asp:GridView>
                 </td>

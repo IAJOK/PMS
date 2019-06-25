@@ -73,6 +73,7 @@
     <Content Include="Global.asax" />
     <Content Include="Homepage.aspx" />
     <Content Include="Models\photo.jpg" />
+    <Content Include="operation.aspx" />
     <Content Include="Web.config" />
     <Content Include="WebForm1.aspx" />
     <Content Include="WebForm2.aspx" />
@@ -108,6 +109,13 @@
     </Compile>
     <Compile Include="Homepage.aspx.designer.cs">
       <DependentUpon>Homepage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="operation.aspx.cs">
+      <DependentUpon>operation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="operation.aspx.designer.cs">
+      <DependentUpon>operation.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site1.Master.cs">
