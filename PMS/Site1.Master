@@ -1,0 +1,46 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="PMS.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style1 {
+            width: 1065px;
+            height: 67px;
+        }
+    
+p.MsoNormal{
+margin-bottom:.0001pt;
+text-align:justify;
+text-justify:inter-ideograph;
+font-family:'Times New Roman';
+font-size:11.0000pt;
+            margin-left: 0pt;
+            margin-right: 0pt;
+            margin-top: 0pt;
+        }
+
+    </style>
+</head>
+    <div>         
+        <img alt="" class="auto-style1" src="Models/photo.jpg" width=100% alt="要添加的文字"/>
+        <br/>       
+    </div>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                <p>
+                    &nbsp;</p>
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+    <p class="MsoNormal">
+        现在时间:<%=DateTime.Now.ToString() %></p>
+</body>
+</html>
