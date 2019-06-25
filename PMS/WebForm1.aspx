@@ -10,9 +10,9 @@
         height: 27px;
     }
         .auto-style4 {
-        height: 23px;
-        background-color: #FFFFFF;
-    }
+            height: 23px;
+            background-color: #99CCFF;
+        }
     .auto-style5 {
         color: #000000;
         font-size: x-large;
