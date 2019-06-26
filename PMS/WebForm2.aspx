@@ -98,8 +98,9 @@
             </tr>
             <tr>
                 <td class="auto-style3">
-                    <asp:Button ID="Button1" runat="server" Text="查询" />
-                    <asp:Button ID="Button2" runat="server" Text="打印" />
+                    <asp:Button ID="Button1" runat="server" Text="查询" OnClick="Button1_Click1" />
+                    <asp:Button ID="Button2" runat="server" Text="打印" OnClick="Button2_Click" />
+                    <asp:Button ID="Button5" runat="server" Text="查询二" OnClick="Button5_Click" />
                     <br />
                     <div class="auto-style12">
                         <asp:GridView ID="GridView1" runat="server" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" Width="332px">
@@ -107,8 +108,9 @@
                     </div>
                 </td>
                 &nbsp;<td class="auto-style11">
-                    <asp:Button ID="Button3" runat="server" Text="查询" />
+                    <asp:Button ID="Button3" runat="server" Text="查询" OnClick="Button3_Click1" />
                     <asp:Button ID="Button4" runat="server" Text="打印" />
+                    <asp:Button ID="Button6" runat="server" Text="查询二" OnClick="Button6_Click" />
                     <asp:GridView ID="GridView2" runat="server" Width="339px">
                     </asp:GridView>
                 </td>
