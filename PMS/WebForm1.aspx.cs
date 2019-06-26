@@ -22,13 +22,23 @@ namespace PMS
             using (SqlConnection cn = new SqlConnection())
             {
 
+
                 cn.ConnectionString = sqlconn;
                 cn.Open();
-                String sql1 = "select * from 员工";
-                SqlCommand cmd = new SqlCommand(sql1, cn);
-                SqlDataReader dr = cmd.ExecuteReader();
-                GridView1.DataSource = dr;
+
+                DataSet ds = new DataSet();
+
+
+                string cmdtext = string.Format("select * from 员工 where eid= '{0}'", Session["eid"]);
+
+                SqlDataAdapter sda = new SqlDataAdapter(cmdtext, cn);
+
+                sda.Fill(ds, "员工");
+
+                GridView1.DataSource = ds;
                 GridView1.DataBind();
+
+
 
             }
         }
@@ -46,32 +56,11 @@ namespace PMS
 
             }
         }
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            using (SqlConnection cn = new SqlConnection())
-            {
+   
 
+       
 
-                cn.ConnectionString = sqlconn;
-                cn.Open();
-
-                DataSet ds = new DataSet();
-
-               
-                string cmdtext = string.Format("select * from 员工 where eid= '{0}'", TextBox1.Text);
-                
-                SqlDataAdapter sda = new SqlDataAdapter(cmdtext, cn);
-                
-                sda.Fill(ds, "员工");
-
-                GridView1.DataSource = ds;
-                GridView1.DataBind();
-
-
-            }
-        }
-
-        protected void Button3_Click(object sender, EventArgs e)
+        protected void Button2_Click(object sender, EventArgs e)
         {
             using (SqlConnection cn = new SqlConnection())
             {
@@ -83,7 +72,7 @@ namespace PMS
                 DataSet ds = new DataSet();
 
 
-                string cmdtext = string.Format("select * from 部门 where departID= '{0}'", TextBox6.Text);
+                string cmdtext = string.Format("select * from 部门 where departID= '{0}'", TextBox5.Text);
 
                 SqlDataAdapter sda = new SqlDataAdapter(cmdtext, cn);
 
@@ -96,54 +85,5 @@ namespace PMS
             }
         }
 
-        protected void Button5_Click(object sender, EventArgs e)
-        {
-            using (SqlConnection cn = new SqlConnection())
-            {
-
-
-                cn.ConnectionString = sqlconn;
-                cn.Open();
-
-                DataSet ds = new DataSet();
-
-
-                string cmdtext = string.Format("select * from 员工 where ename= N'{0}'", TextBox2.Text);
-
-                SqlDataAdapter sda = new SqlDataAdapter(cmdtext, cn);
-
-                sda.Fill(ds, "员工");
-
-                GridView1.DataSource = ds;
-                GridView1.DataBind();
-
-
-            }
-        }
-
-        protected void Button6_Click(object sender, EventArgs e)
-        {
-            using (SqlConnection cn = new SqlConnection())
-            {
-
-
-                cn.ConnectionString = sqlconn;
-                cn.Open();
-
-                DataSet ds = new DataSet();
-
-
-                string cmdtext = string.Format("select * from 部门 where dname= '{0}'", TextBox7.Text);
-
-                SqlDataAdapter sda = new SqlDataAdapter(cmdtext, cn);
-
-                sda.Fill(ds, "部门");
-
-                GridView2.DataSource = ds;
-                GridView2.DataBind();
-
-
-            }
-        }
     }
 }

@@ -84,16 +84,16 @@ namespace PMS
 
                 DataSet ds = new DataSet();
 
+               
+                    string cmdtext = string.Format("select * from 员工 where eid= '{0}'", TextBox1.Text);
 
-                string cmdtext = string.Format("select * from 员工 where eid= '{0}'", TextBox1.Text);
+                    SqlDataAdapter sda = new SqlDataAdapter(cmdtext, cn);
 
-                SqlDataAdapter sda = new SqlDataAdapter(cmdtext, cn);
+                    sda.Fill(ds, "员工");
 
-                sda.Fill(ds, "员工");
-
-                GridView1.DataSource = ds;
-                GridView1.DataBind();
-
+                    GridView1.DataSource = ds;
+                    GridView1.DataBind();
+                
 
             }
         }

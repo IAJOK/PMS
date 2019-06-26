@@ -69,7 +69,7 @@
         </tr>
         <tr>
             <td class="auto-style3">
-                <asp:Button ID="Button1" runat="server" Text="确认"  />
+                <asp:Button ID="Button1" runat="server" Text="确认" OnClick="Button1_Click"  />
             </td>
         </tr>
     </table>

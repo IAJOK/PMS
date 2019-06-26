@@ -48,7 +48,7 @@ namespace PMS
                         else
                         {
                             Response.Redirect("WebForm2.aspx?m=" + tb_eid.Text);
-                            Session["eid"] = answer1;
+                            Session["eid"] = tb_eid.Text;
                         }
                     }
                     else

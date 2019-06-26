@@ -77,8 +77,8 @@ namespace PMS
                 cn.ConnectionString = sqlconn;
                 cn.Open();
                 string sqlstr = string.Format("INSERT INTO 部门(departID,dname,director)" +
-                                              "VALUES('{0}',N'{1}','{2}')", TextBox6.Text, TextBox7.Text,
-                  TextBox8.Text);
+                                              "VALUES('{0}',N'{1}','{2}')", TextBox5.Text, TextBox6.Text,
+                  TextBox7.Text);
                 SqlCommand cmd = new SqlCommand(sqlstr, cn);
                 try
                 {
