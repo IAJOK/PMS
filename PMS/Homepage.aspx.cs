@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace 专业技能训练
+namespace PMS
 {
     public partial class Homepage : System.Web.UI.Page
     {
@@ -16,7 +16,7 @@ namespace 专业技能训练
         {
             if (Request.QueryString["eid"] != null)
             {
-                tb_eid.text = Request.QueryString["eid"].ToString();
+                tb_eid.Text = Request.QueryString["eid"].ToString();
             }
         }
         protected void bt_login_Click(object sender, EventArgs e)
@@ -67,6 +67,5 @@ namespace 专业技能训练
         {
 
         }
-
     }
 }
