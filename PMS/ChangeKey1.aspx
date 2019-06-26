@@ -35,6 +35,10 @@
             text-align: left;
             text-decoration: none;
         }
+        .auto-style11 {
+            text-align: center;
+            height: 25px;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -59,13 +63,13 @@
             </td>
         </tr>
         <tr>
-            <td class="auto-style3">确认密码：<asp:TextBox ID="TextBox12" runat="server"></asp:TextBox>
+            <td class="auto-style11">&nbsp; 确认密码：<asp:TextBox ID="TextBox12" runat="server"></asp:TextBox>
                 <asp:Label ID="Label1" runat="server"></asp:Label>
             </td>
         </tr>
         <tr>
             <td class="auto-style3">
-                <asp:Button ID="Button1" runat="server" Text="确认" />
+                <asp:Button ID="Button1" runat="server" Text="确认"  />
             </td>
         </tr>
     </table>
