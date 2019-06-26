@@ -87,14 +87,15 @@
                 </tr>
                 <tr>
                     <td class="auto-style10"></td>
-                    <td class="auto-style10"></td>
+                    <td class="auto-style10">
+                        &nbsp;</td>
                     <td class="auto-style10"></td>
                 </tr>
                 <tr>
                     <td class="auto-style11"></td>
                   <td class="auto-style11">
-                        <asp:TextBox ID="tb_eid" runat="server" Height="40px" Width="400px" placeholder="请输入账号" Font-Size="Large" OnTextChanged="tb_eid_TextChanged"></asp:TextBox>
-                      </td>
+                        <asp:TextBox ID="tb_eid" runat="server" Height="40px" Width="400px" placeholder="请输入账号" Font-Size="Large"></asp:TextBox>
+                    </td>
                     <td class="auto-style11">
                     </td>
                     
