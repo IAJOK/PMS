@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Homepage.aspx.cs" Inherits="PMS.Homepage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="login.aspx.cs" Inherits="PMS.login" %>
 
 <!DOCTYPE html>
 
@@ -18,11 +18,14 @@
         .auto-style1 {
             width: 100%;
         }
+        .auto-style2 {
+            height: 737px;
+            width: 479px;
+        }
          .auto-style4 {
             font-size: xx-large;
             font-weight: bold;
             height: 49px;
-            text-align: center;
         }
           .auto-style5 {
             font-size: 14pt;
@@ -50,9 +53,6 @@
         .auto-style15 {
             height: 24px;
         }
-        .auto-style16 {
-            width: 899px;
-        }
     </style>
 </head>
 <body>
@@ -61,7 +61,7 @@
             <table class="auto-style1">
                 <tr>
                     <td rowspan="15">
-                        <img src="Models/login_medicine.jpg" class="auto-style16" />
+                        <img alt="" class="auto-style2" src="images/login_medicine.jpg" /></td>
                     <td class="auto-style13"></td>
                     <td class="auto-style13"></td>
                     <td class="auto-style13"></td>
@@ -87,15 +87,14 @@
                 </tr>
                 <tr>
                     <td class="auto-style10"></td>
-                    <td class="auto-style10">
-                        &nbsp;</td>
+                    <td class="auto-style10"></td>
                     <td class="auto-style10"></td>
                 </tr>
                 <tr>
                     <td class="auto-style11"></td>
                   <td class="auto-style11">
-                        <asp:TextBox ID="tb_eid" runat="server" Height="40px" Width="400px" placeholder="请输入账号" Font-Size="Large"></asp:TextBox>
-                    </td>
+                        <asp:TextBox ID="tb_uid" runat="server" Height="40px" Width="400px" placeholder="请输入账号" Font-Size="Large" OnTextChanged="tb_uid_TextChanged"></asp:TextBox>
+                      </td>
                     <td class="auto-style11">
                     </td>
                     
@@ -103,7 +102,7 @@
                 <tr style="height:10px">
                     <td>&nbsp;</td>
                     <td>
-                        <asp:Label ID="lb_eiderror" runat="server" Font-Size="Medium" ForeColor="Red"></asp:Label>
+                        <asp:Label ID="lb_uiderror" runat="server" Font-Size="Medium" ForeColor="Red"></asp:Label>
                     </td>
                     <td>&nbsp;</td>
                 </tr>
@@ -131,7 +130,7 @@
                 <tr>
                     <td>&nbsp;</td>
                    <td>
-                        &nbsp;</td>
+                    </td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>

@@ -20,6 +20,7 @@
             text-align: center;
             font-size: x-large;
             background-color: #000000;
+            text-decoration: none;
         }
         .auto-style7 {
             color: #000000;

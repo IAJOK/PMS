@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace PMS
 {
-    public partial class Homepage : System.Web.UI.Page
+    public partial class login : System.Web.UI.Page
     {
         string eid;
         string pwd;
@@ -16,12 +16,12 @@ namespace PMS
         {
             if (Request.QueryString["eid"] != null)
             {
-                tb_eid.Text = Request.QueryString["eid"].ToString();
+                tb_uid.Text = Request.QueryString["eid"].ToString();
             }
         }
         protected void bt_login_Click(object sender, EventArgs e)
         {
-            eid = tb_eid.Text.ToString().Trim();
+            eid = tb_uid.Text.ToString().Trim();
             pwd = tb_pwd.Text.ToString().Trim();
 
             // 连接数据库，查询密码是否正确
@@ -51,7 +51,7 @@ namespace PMS
                     }
                     else
                     {
-                        tb_eid.Text = "";
+                        tb_uid.Text = "";
                         tb_pwd.Text = "";
                         lb_pwderror.Text = "账号或者密码错误！";
                     }

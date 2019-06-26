@@ -10,7 +10,7 @@
 namespace PMS {
     
     
-    public partial class Homepage {
+    public partial class login {
         
         /// <summary>
         /// form1 控件。
@@ -22,22 +22,22 @@ namespace PMS {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// tb_eid 控件。
+        /// tb_uid 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_eid;
+        protected global::System.Web.UI.WebControls.TextBox tb_uid;
         
         /// <summary>
-        /// lb_eiderror 控件。
+        /// lb_uiderror 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lb_eiderror;
+        protected global::System.Web.UI.WebControls.Label lb_uiderror;
         
         /// <summary>
         /// tb_pwd 控件。

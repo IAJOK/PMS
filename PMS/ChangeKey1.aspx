@@ -31,6 +31,10 @@
             text-align: center;
             height: 27px;
         }
+        .auto-style10 {
+            text-align: left;
+            text-decoration: none;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -38,7 +42,7 @@
         <tr>
             <td class="auto-style5">
                 <p class="auto-style6">
-                    <a class="auto-style6" href="Homepage.aspx"><span class="auto-style7">首页</span></a><span class="auto-style8">&nbsp;&nbsp; </span><a class="auto-style6" href="WebForm1.aspx"><span class="auto-style7">查询操作</span></a><span class="auto-style8">&nbsp;&nbsp; </span><a class="auto-style6" href="ChangeKey1.aspx"><span class="auto-style7">修改密码</span></a><span class="auto-style8">&nbsp;&nbsp; </span><a class="auto-style6" href="about.aspx"><span class="auto-style7">关于</span></a>
+                    <a class="auto-style10" href="Homepage.aspx"><span class="auto-style7">首页</span></a><span class="auto-style8">&nbsp;&nbsp; </span><a class="auto-style10" href="WebForm1.aspx"><span class="auto-style7">查询操作</span></a><span class="auto-style8">&nbsp;&nbsp; </span><a class="auto-style10" href="ChangeKey1.aspx"><span class="auto-style7">修改密码</span></a><span class="auto-style8">&nbsp;&nbsp; </span><a class="auto-style10" href="about.aspx"><span class="auto-style7">关于</span></a>
                 </p>
                 <hr />
             </td>
