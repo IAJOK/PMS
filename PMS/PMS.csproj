@@ -77,6 +77,7 @@
     <Content Include="Global.asax" />
     <Content Include="Homepage.aspx" />
     <Content Include="login.aspx" />
+    <Content Include="Models\login_medicine.jpg" />
     <Content Include="Models\photo.jpg" />
     <Content Include="operation.aspx" />
     <Content Include="Web.config" />
