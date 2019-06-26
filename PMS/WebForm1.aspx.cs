@@ -46,103 +46,73 @@ namespace PMS
 
             }
         }
-        protected void Button1_Click(object sender, EventArgs e)
+
+
+        protected void Button2_Click(object sender, EventArgs e)
         {
-            using (SqlConnection cn = new SqlConnection())
+            try//防报错直接跳死，如果发现检测的时候无任何反应可以删除这一句try以及后面对应的catch语句
             {
+                using (SqlConnection cn = new SqlConnection())
+                {
 
 
-                cn.ConnectionString = sqlconn;
-                cn.Open();
+                    cn.ConnectionString = sqlconn;
+                    cn.Open();
 
-                DataSet ds = new DataSet();
+                    DataSet ds = new DataSet();
+                    int first = 0;//用来检测第一个勾选的对象
+                    String selectsql = "";//用来编写对应的sql查询语句
+                    if (CheckBox_id.Checked)//因为是第一次检测所以不用进行首个勾选的判断
+                    {
 
-               
-                string cmdtext = string.Format("select * from 员工 where eid= '{0}'", TextBox1.Text);
-                
-                SqlDataAdapter sda = new SqlDataAdapter(cmdtext, cn);
-                
-                sda.Fill(ds, "员工");
-
-                GridView1.DataSource = ds;
-                GridView1.DataBind();
+                        first = 1;
+                        selectsql = selectsql + "departID= '" + TextBox_id.Text + "'";
 
 
+                    }
+                    if (CheckBox_name.Checked)
+                    {
+                        if (first == 0)//修改检测标记和对应语句
+                        {
+                            first = 1;
+                            selectsql = selectsql + "dname= '" + TextBox_name.Text + "'";
+                        }
+                        else
+                        {
+                            selectsql = selectsql + "and dname= '" + TextBox_name.Text + "'";
+                        }
+                    }
+                    if (CheckBox_de.Checked)
+                    {
+                        if (first == 0)//修改检测标记和对应语句
+                        {
+                            first = 1;
+                            selectsql = selectsql + "departID= '" + TextBox_de.Text + "'";
+                        }
+                        else
+                        {
+                            selectsql = selectsql + "and departID= '" + TextBox_de.Text + "'";
+                        }
+                    }
+                    if (first==0)//顺便利用这个标记检测是否至少勾选一个选项，进行报错
+                    {
+                        Label_err.Text = "请至少勾选一个选项进行搜索";
+                    }
+
+                    string cmdtext = string.Format("select * from 部门 where " + selectsql);//将编辑好的语句连接好
+                    Label_err.Text = selectsql;
+
+                    SqlDataAdapter sda = new SqlDataAdapter(cmdtext, cn);
+
+                    sda.Fill(ds, "部门");
+
+                    GridView2.DataSource = ds;
+                    GridView2.DataBind();
+
+
+                }
             }
-        }
-
-        protected void Button3_Click(object sender, EventArgs e)
-        {
-            using (SqlConnection cn = new SqlConnection())
-            {
-
-
-                cn.ConnectionString = sqlconn;
-                cn.Open();
-
-                DataSet ds = new DataSet();
-
-
-                string cmdtext = string.Format("select * from 部门 where departID= '{0}'", TextBox6.Text);
-
-                SqlDataAdapter sda = new SqlDataAdapter(cmdtext, cn);
-
-                sda.Fill(ds, "部门");
-
-                GridView2.DataSource = ds;
-                GridView2.DataBind();
-
-
-            }
-        }
-
-        protected void Button5_Click(object sender, EventArgs e)
-        {
-            using (SqlConnection cn = new SqlConnection())
-            {
-
-
-                cn.ConnectionString = sqlconn;
-                cn.Open();
-
-                DataSet ds = new DataSet();
-
-
-                string cmdtext = string.Format("select * from 员工 where ename= N'{0}'", TextBox2.Text);
-
-                SqlDataAdapter sda = new SqlDataAdapter(cmdtext, cn);
-
-                sda.Fill(ds, "员工");
-
-                GridView1.DataSource = ds;
-                GridView1.DataBind();
-
-
-            }
-        }
-
-        protected void Button6_Click(object sender, EventArgs e)
-        {
-            using (SqlConnection cn = new SqlConnection())
-            {
-
-
-                cn.ConnectionString = sqlconn;
-                cn.Open();
-
-                DataSet ds = new DataSet();
-
-
-                string cmdtext = string.Format("select * from 部门 where dname= '{0}'", TextBox7.Text);
-
-                SqlDataAdapter sda = new SqlDataAdapter(cmdtext, cn);
-
-                sda.Fill(ds, "部门");
-
-                GridView2.DataSource = ds;
-                GridView2.DataBind();
-
-
+            catch {
             }
         }
     }

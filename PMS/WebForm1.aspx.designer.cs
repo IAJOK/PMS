@@ -22,22 +22,22 @@ namespace PMS {
         protected global::System.Web.UI.WebControls.GridView GridView1;
         
         /// <summary>
-        /// TextBox5 控件。
+        /// TextBox_id 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox5;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_id;
         
         /// <summary>
-        /// CheckBox5 控件。
+        /// CheckBox_id 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBox5;
+        protected global::System.Web.UI.WebControls.CheckBox CheckBox_id;
         
         /// <summary>
         /// Button1 控件。
@@ -49,40 +49,40 @@ namespace PMS {
         protected global::System.Web.UI.WebControls.Button Button1;
         
         /// <summary>
-        /// TextBox6 控件。
+        /// TextBox_name 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox6;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_name;
         
         /// <summary>
-        /// CheckBox6 控件。
+        /// CheckBox_name 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBox6;
+        protected global::System.Web.UI.WebControls.CheckBox CheckBox_name;
         
         /// <summary>
-        /// TextBox7 控件。
+        /// TextBox_de 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox7;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_de;
         
         /// <summary>
-        /// CheckBox7 控件。
+        /// CheckBox_de 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBox7;
+        protected global::System.Web.UI.WebControls.CheckBox CheckBox_de;
         
         /// <summary>
         /// Button2 控件。
@@ -101,6 +101,15 @@ namespace PMS {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button3;
+        
+        /// <summary>
+        /// Label_err 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_err;
         
         /// <summary>
         /// GridView2 控件。
