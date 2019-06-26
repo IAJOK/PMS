@@ -42,11 +42,11 @@ namespace PMS
                         Response.AppendCookie(cookiePwd);
                         if (reader["limit"].ToString().Replace(" ", "") == "False")
                         {
-                            Response.Redirect("registe.aspx");
+                            Response.Redirect("WebForm1.aspx");
                         }
                         else
                         {
-                            Response.Redirect("registe.aspx");
+                            Response.Redirect("WebForm2.aspx");
                         }
                     }
                     else
