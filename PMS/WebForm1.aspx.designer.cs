@@ -13,13 +13,13 @@ namespace PMS {
     public partial class WebForm1 {
         
         /// <summary>
-        /// Label1 控件。
+        /// GridView1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.GridView GridView1;
         
         /// <summary>
         /// TextBox5 控件。
@@ -40,13 +40,13 @@ namespace PMS {
         protected global::System.Web.UI.WebControls.CheckBox CheckBox5;
         
         /// <summary>
-        /// Label2 控件。
+        /// Button1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.Button Button1;
         
         /// <summary>
         /// TextBox6 控件。
@@ -67,15 +67,6 @@ namespace PMS {
         protected global::System.Web.UI.WebControls.CheckBox CheckBox6;
         
         /// <summary>
-        /// Label3 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
-        
-        /// <summary>
         /// TextBox7 控件。
         /// </summary>
         /// <remarks>
@@ -94,24 +85,6 @@ namespace PMS {
         protected global::System.Web.UI.WebControls.CheckBox CheckBox7;
         
         /// <summary>
-        /// Label4 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label4;
-        
-        /// <summary>
-        /// Label5 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label5;
-        
-        /// <summary>
         /// Button2 控件。
         /// </summary>
         /// <remarks>
@@ -128,15 +101,6 @@ namespace PMS {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button3;
-        
-        /// <summary>
-        /// Button4 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button4;
         
         /// <summary>
         /// GridView2 控件。

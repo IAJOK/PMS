@@ -6,9 +6,6 @@
             float: left;
             height: 139px;
         }
-    .auto-style3 {
-        height: 27px;
-    }
         .auto-style4 {
             height: 23px;
             background-color: #99CCFF;
@@ -19,17 +16,6 @@
     }
     .auto-style6 {
         text-decoration: none;
-    }
-    .auto-style7 {
-        height: 29px;
-    }
-    .auto-style8 {
-        height: 29px;
-        background-color: #FFFFFF;
-            width: 459px;
-        }
-    .auto-style9 {
-        background-color: #FFFFFF;
     }
     .auto-style10 {
         height: 27px;
@@ -45,10 +31,6 @@
         .auto-style13 {
             height: 23px;
             background-color: #99CCFF;
-            width: 459px;
-        }
-        .auto-style14 {
-            background-color: #FFFFFF;
             width: 459px;
         }
         .auto-style15 {
@@ -69,6 +51,16 @@
             background-color: #FFFFFF;
             height: 31px;
         }
+        .auto-style19 {
+            background-color: #FFFFFF;
+        }
+        .auto-style20 {
+            background-color: #FFFFFF;
+            width: 459px;
+        }
+        .auto-style21 {
+            width: 459px;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -87,42 +79,47 @@
     </td>
             </tr>
             <tr>
-                <td class="auto-style17">员工代号：<asp:Label ID="Label1" runat="server"></asp:Label>
+                <td class="auto-style20">
+                        <asp:GridView ID="GridView1" runat="server" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" Width="332px" CellPadding="4" ForeColor="#333333" GridLines="None">
+                            <AlternatingRowStyle BackColor="White" />
+                            <EditRowStyle BackColor="#7C6F57" />
+                            <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+                            <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+                            <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
+                            <RowStyle BackColor="#E3EAEB" />
+                            <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
+                            <SortedAscendingCellStyle BackColor="#F8FAFA" />
+                            <SortedAscendingHeaderStyle BackColor="#246B61" />
+                            <SortedDescendingCellStyle BackColor="#D4DFE1" />
+                            <SortedDescendingHeaderStyle BackColor="#15524A" />
+                        </asp:GridView>
                 </td>
-                <td class="auto-style18">部门代号：<asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
+                <td class="auto-style19">部门代号：<asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
                     <asp:CheckBox ID="CheckBox5" runat="server" />
                 </td>
             </tr>
             <tr>
-                <td class="auto-style15">员工姓名：<asp:Label ID="Label2" runat="server"></asp:Label>
+                <td class="auto-style15">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:Button ID="Button1" runat="server" Text="打印" />
                 </td>
                 <td class="auto-style10">部门名称：<asp:TextBox ID="TextBox6" runat="server"></asp:TextBox>
                     <asp:CheckBox ID="CheckBox6" runat="server" />
                 </td>
             </tr>
             <tr>
-                <td class="auto-style14">所属部门：<asp:Label ID="Label3" runat="server"></asp:Label>
-                </td>
-                <td class="auto-style9">部门主管：<asp:TextBox ID="TextBox7" runat="server"></asp:TextBox>
+                <td class="auto-style17"></td>
+                <td class="auto-style18">部门主管：<asp:TextBox ID="TextBox7" runat="server"></asp:TextBox>
                     <asp:CheckBox ID="CheckBox7" runat="server" />
                 </td>
             </tr>
             <tr>
-                <td class="auto-style8">&nbsp; 年龄：&nbsp;&nbsp;&nbsp;
-                    <asp:Label ID="Label4" runat="server"></asp:Label>
+                <td class="auto-style21">
+                    <br />
                 </td>
-                <td class="auto-style7">&nbsp;&nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style16">登入密码：<asp:Label ID="Label5" runat="server"></asp:Label>
-                    <br />
-                    <br />
-                    <asp:Button ID="Button2" runat="server" Text="打印" />
-                </td>
-                <td class="auto-style3">
-                    <br />
-                    <asp:Button ID="Button3" runat="server" Text="查询" />
-                    <asp:Button ID="Button4" runat="server" Text="打印" />
+                <td>
+                    <asp:Button ID="Button2" runat="server" Text="查询" />
+                    <asp:Button ID="Button3" runat="server" Text="打印" />
                     <br />
                 </td>
             </tr>
