@@ -53,9 +53,9 @@ namespace PMS
             {
                 cn.ConnectionString = sqlconn;
                 cn.Open();
-                string sqlstr = string.Format("INSERT INTO 员工(eid,ename,departID,age,password)" +
-                                              "VALUES('{0}',N'{1}','{2}','{3}',N'{4}')", TextBox1.Text, TextBox2.Text,
-                  TextBox3.Text, TextBox4.Text, TextBox5.Text);
+                string sqlstr = string.Format("INSERT INTO 员工(eid,ename,departID,age,password,limit)" +
+                                              "VALUES('{0}',N'{1}','{2}','{3}',N'{4}','{5}')", TextBox_pid.Text, TextBox_pname.Text,
+                 DropDownList1.SelectedValue.ToString(), TextBox_age.Text, TextBox_psw.Text, CheckBox_limit.Checked);
                 SqlCommand cmd = new SqlCommand(sqlstr, cn);
                 try
                 {
@@ -77,8 +77,8 @@ namespace PMS
                 cn.ConnectionString = sqlconn;
                 cn.Open();
                 string sqlstr = string.Format("INSERT INTO 部门(departID,dname,director)" +
-                                              "VALUES('{0}',N'{1}','{2}')", TextBox5.Text, TextBox6.Text,
-                  TextBox7.Text);
+                                              "VALUES('{0}',N'{1}','{2}')", TextBox_did.Text, TextBox_dname.Text,
+                  TextBox_de.Text);
                 SqlCommand cmd = new SqlCommand(sqlstr, cn);
                 try
                 {
@@ -100,7 +100,7 @@ namespace PMS
 
                 cn.ConnectionString = sqlconn;
                 cn.Open();
-                string sql = string.Format("delete from 员工 where eid='{0}'", TextBox1.Text);
+                string sql = string.Format("delete from 员工 where eid='{0}'", TextBox_pid.Text);
 
                 SqlCommand cmd = new SqlCommand(sql, cn);
 
@@ -123,7 +123,7 @@ namespace PMS
 
                 cn.ConnectionString = sqlconn;
                 cn.Open();
-                string sql = string.Format("delete from 部门 where departID='{0}'", TextBox6.Text);
+                string sql = string.Format("delete from 部门 where departID='{0}'", TextBox_dname.Text);
 
                 SqlCommand cmd = new SqlCommand(sql, cn);
 
@@ -145,8 +145,8 @@ namespace PMS
             {
                 cn.ConnectionString = sqlconn;
                 cn.Open();
-                string sql = string.Format("update 员工 set eid='{0}', ename=N'{1}', departId='{2}', age='{3}',password=N'{4}'where eid='{5}'",
-                    TextBox1.Text, TextBox2.Text, TextBox3.Text, TextBox4.Text, TextBox5.Text, TextBox1.Text);
+                string sql = string.Format("update 员工 set ename=N'{0}', departId='{1}', age='{2}',password=N'{3}',limit='{4}'where eid='{5}'",
+                    TextBox_pname.Text, DropDownList1.SelectedValue.ToString(),TextBox_age.Text, TextBox_psw.Text, CheckBox_limit.Checked, TextBox_pid.Text);
 
                 SqlCommand cmd = new SqlCommand(sql, cn);
                 int effectLine = cmd.ExecuteNonQuery();
@@ -170,7 +170,7 @@ namespace PMS
                 cn.ConnectionString = sqlconn;
                 cn.Open();
                 string sql = string.Format("update 部门 set departID='{0}', dname=N'{1}', director='{2}'where eid='{3}'",
-                    TextBox5.Text, TextBox6.Text, TextBox7.Text,TextBox1.Text);
+                    TextBox_did.Text, TextBox_dname.Text, TextBox_de.Text,TextBox_pid.Text);
 
                 SqlCommand cmd = new SqlCommand(sql, cn);
                 int effectLine = cmd.ExecuteNonQuery();

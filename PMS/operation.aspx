@@ -20,8 +20,9 @@
             background-color: #99CCFF;
         }
     .auto-style9 {
-        background-color: #FFFFFF;
-    }
+            background-color: #FFFFFF;
+            height: 25px;
+        }
     .auto-style10 {
         height: 27px;
         background-color: #FFFFFF;
@@ -61,35 +62,42 @@
     </td>
             </tr>
             <tr>
-                <td class="auto-style9">员工代号：<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                <td class="auto-style9">员工代号：<asp:TextBox ID="TextBox_pid" runat="server"></asp:TextBox>
                 </td>
-                <td class="auto-style9">部门代号：<asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style10">员工姓名：<asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
-                </td>
-                <td class="auto-style10">部门名称：<asp:TextBox ID="TextBox6" runat="server"></asp:TextBox>
+                <td class="auto-style9">部门代号：<asp:TextBox ID="TextBox_did" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
-                <td class="auto-style10">所属部门：<asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True">
+                <td class="auto-style10">员工姓名：<asp:TextBox ID="TextBox_pname" runat="server"></asp:TextBox>
+                </td>
+                <td class="auto-style10">部门名称：<asp:TextBox ID="TextBox_dname" runat="server"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style10">所属部门：<asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource1" DataTextField="dname" DataValueField="departID">
                     </asp:DropDownList>
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [部门]"></asp:SqlDataSource>
                 </td>
-                <td class="auto-style10">部门主管：<asp:TextBox ID="TextBox7" runat="server"></asp:TextBox>
+                <td class="auto-style10">部门主管：<asp:TextBox ID="TextBox_de" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
                 <td class="auto-style8">&nbsp; 年龄：&nbsp;&nbsp;&nbsp;
-                    <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_age" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style7">&nbsp;&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style3">登入密码：：<asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
+                <td class="auto-style3">登入密码：：<asp:TextBox ID="TextBox_psw" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style3">
                     <br /></td>
+            </tr>
+            <tr>
+                <td class="auto-style3">权限：<asp:CheckBox ID="CheckBox_limit" runat="server" />
+                </td>
+                <td class="auto-style3">
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style3">
