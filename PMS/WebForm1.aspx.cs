@@ -46,12 +46,9 @@ namespace PMS
 
             }
         }
-
-
-        protected void Button2_Click(object sender, EventArgs e)
+        protected void Button2_Click1(object sender, EventArgs e)
         {
-            try//防报错直接跳死，如果发现检测的时候无任何反应可以删除这一句try以及后面对应的catch语句
-            {
+            
                 using (SqlConnection cn = new SqlConnection())
                 {
 
@@ -87,20 +84,31 @@ namespace PMS
                         if (first == 0)//修改检测标记和对应语句
                         {
                             first = 1;
-                            selectsql = selectsql + "departID= '" + TextBox_de.Text + "'";
+                        if (TextBox_de.Text.Equals(""))
+                        {
+                            selectsql = selectsql + "director is null";
+                        } else
+                        { selectsql = selectsql + "director= '" + TextBox_de.Text + "'"; }
                         }
                         else
                         {
-                            selectsql = selectsql + "and departID= '" + TextBox_de.Text + "'";
+                        if (TextBox_de.Text.Equals(""))
+                        {
+                            selectsql = selectsql + " and director is null";
                         }
+                        else
+                        { selectsql = selectsql + "and director= '" + TextBox_de.Text + "'"; }
+                    
+                }
                     }
-                    if (first==0)//顺便利用这个标记检测是否至少勾选一个选项，进行报错
+                    if (first == 0)//顺便利用这个标记检测是否至少勾选一个选项，进行报错
                     {
                         Label_err.Text = "请至少勾选一个选项进行搜索";
                     }
-
+                     try//防报错直接跳死，如果发现检测的时候无任何反应可以删除这一句try以及后面对应的catch语句
+                     {
                     string cmdtext = string.Format("select * from 部门 where " + selectsql);//将编辑好的语句连接好
-                    Label_err.Text = selectsql;
+                    
 
                     SqlDataAdapter sda = new SqlDataAdapter(cmdtext, cn);
 
@@ -108,12 +116,14 @@ namespace PMS
 
                     GridView2.DataSource = ds;
                     GridView2.DataBind();
+                     }
+                     catch {
+                    Label_err.Text = "请检查输入";
+                }
 
 
                 }
             }
-            catch {
-            }
+            
         }
     }
-}

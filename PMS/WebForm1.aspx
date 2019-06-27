@@ -103,14 +103,14 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <asp:Button ID="Button1" runat="server" Text="打印" />
                 </td>
-                <td class="auto-style10">部门名称：<asp:TextBox ID="TextBox6" runat="server"></asp:TextBox>
-                    <asp:CheckBox ID="CheckBox6" runat="server" />
+                <td class="auto-style10">部门名称：<asp:TextBox ID="TextBox_name" runat="server"></asp:TextBox>
+                    <asp:CheckBox ID="CheckBox_name" runat="server" />
                 </td>
             </tr>
             <tr>
                 <td class="auto-style17"></td>
-                <td class="auto-style18">部门主管：<asp:TextBox ID="TextBox7" runat="server"></asp:TextBox>
-                    <asp:CheckBox ID="CheckBox7" runat="server" />
+                <td class="auto-style18">部门主管：<asp:TextBox ID="TextBox_de" runat="server"></asp:TextBox>
+                    <asp:CheckBox ID="CheckBox_de" runat="server" />
                 </td>
             </tr>
             <tr>
@@ -118,7 +118,7 @@
                     <br />
                 </td>
                 <td>
-                    <asp:Button ID="Button2" runat="server" Text="查询" />
+                    <asp:Button ID="Button2" runat="server" Text="查询" OnClick="Button2_Click1" />
                     <asp:Button ID="Button3" runat="server" Text="打印" />
                     <asp:Label ID="Label_err" runat="server" ForeColor="#CC0000"></asp:Label>
                     <br />
