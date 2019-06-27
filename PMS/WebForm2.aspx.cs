@@ -13,7 +13,7 @@ namespace PMS
 {
     public partial class WebForm2 : System.Web.UI.Page
     {
-        String sqlconn = "Data Source=(LocalDB)\\MSSQLLocalDB;" + "AttachDbFilename='|DataDirectory|\\Database2.mdf';";
+        String sqlconn = "Data Source=(LocalDB)\\MSSQLLocalDB;" + "AttachDbFilename='|DataDirectory|\\Database1.mdf';";
         protected void Page_Load(object sender, EventArgs e)
         {
             ShowData1();

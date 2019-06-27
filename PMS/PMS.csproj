@@ -78,10 +78,6 @@
     <Content Include="App_Data\Database1_log.ldf">
       <DependentUpon>Database1.mdf</DependentUpon>
     </Content>
-    <Content Include="App_Data\Database2.mdf" />
-    <Content Include="App_Data\Database2_log.ldf">
-      <DependentUpon>Database2.mdf</DependentUpon>
-    </Content>
     <Content Include="ChangeKey1.aspx" />
     <Content Include="ChangeKey2.aspx" />
     <Content Include="Global.asax" />
