@@ -78,6 +78,7 @@
     <Content Include="App_Data\Database1_log.ldf">
       <DependentUpon>Database1.mdf</DependentUpon>
     </Content>
+    <Content Include="Batchdelete.aspx" />
     <Content Include="ChangeKey1.aspx" />
     <Content Include="ChangeKey2.aspx" />
     <Content Include="Global.asax" />
@@ -96,6 +97,13 @@
     </Compile>
     <Compile Include="about.aspx.designer.cs">
       <DependentUpon>about.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Batchdelete.aspx.cs">
+      <DependentUpon>Batchdelete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Batchdelete.aspx.designer.cs">
+      <DependentUpon>Batchdelete.aspx</DependentUpon>
     </Compile>
     <Compile Include="ChangeKey1.aspx.cs">
       <DependentUpon>ChangeKey1.aspx</DependentUpon>
