@@ -96,9 +96,10 @@
                     <asp:Button ID="Button1" runat="server" Text="录入" />
                     <asp:Button ID="Button2" runat="server" Text="删除" />
                     <asp:Button ID="Button3" runat="server" Text="修改" />
+                    <asp:Label ID="Label1" runat="server"></asp:Label>
                     <br />
                     <div class="auto-style12">
-                        <asp:GridView ID="GridView1" runat="server" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" Width="332px" CellPadding="4" ForeColor="#333333" GridLines="None">
+                        <asp:GridView ID="GridView1" runat="server"  Width="332px" CellPadding="4" ForeColor="#333333" GridLines="None">
                             <AlternatingRowStyle BackColor="White" />
                             <EditRowStyle BackColor="#7C6F57" />
                             <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
@@ -117,6 +118,7 @@
                     <asp:Button ID="Button4" runat="server" Text="录入" />
                     <asp:Button ID="Button5" runat="server" Text="删除" />
                     <asp:Button ID="Button6" runat="server" Text="修改" />
+                    <asp:Label ID="Label2" runat="server"></asp:Label>
                     <asp:GridView ID="GridView2" runat="server" Width="339px" CellPadding="4" ForeColor="#333333" GridLines="None">
                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                         <EditRowStyle BackColor="#999999" />
