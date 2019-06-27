@@ -94,13 +94,13 @@ namespace PMS {
         protected global::System.Web.UI.WebControls.TextBox TextBox_psw;
         
         /// <summary>
-        /// TextBox_limit 控件。
+        /// CheckBox_limit 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_limit;
+        protected global::System.Web.UI.WebControls.CheckBox CheckBox_limit;
         
         /// <summary>
         /// Button1 控件。
