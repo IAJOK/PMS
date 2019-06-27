@@ -23,10 +23,10 @@ namespace PMS
         {
             using (SqlConnection cn = new SqlConnection())
             {
-
+                string eid = Session["eid"].ToString();
                 cn.ConnectionString = sqlconn;
                 cn.Open();
-                String sql1 = "select * from 员工";
+                String sql1 = "select * from 员工 where eid ='" + eid + "'";
                 SqlCommand cmd = new SqlCommand(sql1, cn);
                 SqlDataReader dr = cmd.ExecuteReader();
                 GridView1.DataSource = dr;
