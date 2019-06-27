@@ -48,21 +48,21 @@
                 <strong>修改登入密码</strong></td>
         </tr>
         <tr>
-            <td class="auto-style3">&nbsp;&nbsp;&nbsp;&nbsp; 原密码：<asp:TextBox ID="TextBox10" runat="server"></asp:TextBox>
+            <td class="auto-style3">&nbsp;&nbsp;&nbsp;&nbsp; 原密码：<asp:TextBox ID="TextBox_old" runat="server"></asp:TextBox>
             </td>
         </tr>
         <tr>
-            <td class="auto-style4">&nbsp;&nbsp;&nbsp;&nbsp; 新密码：<asp:TextBox ID="TextBox11" runat="server"></asp:TextBox>
+            <td class="auto-style4">&nbsp;&nbsp;&nbsp;&nbsp; 新密码：<asp:TextBox ID="TextBox_new" runat="server"></asp:TextBox>
             </td>
         </tr>
         <tr>
-            <td class="auto-style3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;确认密码：<asp:TextBox ID="TextBox12" runat="server"></asp:TextBox>
-                <asp:Label ID="Label1" runat="server"></asp:Label>
+            <td class="auto-style3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;确认密码：<asp:TextBox ID="TextBox_new2" runat="server"></asp:TextBox>
+                <asp:Label ID="Label_err" runat="server"></asp:Label>
             </td>
         </tr>
         <tr>
             <td class="auto-style3">
-                <asp:Button ID="Button1" runat="server" Text="确认" />
+                <asp:Button ID="Button1" runat="server" Text="确认" OnClick="Button1_Click" />
             </td>
         </tr>
     </table>

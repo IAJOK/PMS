@@ -16,14 +16,12 @@ namespace PMS
            
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         protected void Button1_Click1(object sender, EventArgs e)
         {
             String eid = Session["eid"].ToString();
+            Response.Write(eid);
+            Response.Write("eid");
             String pwd = TextBox_old.Text.ToString().Trim();
             // 连接数据库，查询密码是否正确
             string sqlconn = "Data Source=(LocalDB)\\MSSQLLocalDB;" +
@@ -43,7 +41,8 @@ namespace PMS
                         Response.AppendCookie(cookiePwd);
                         if (TextBox_new.Text.Equals(TextBox_new2.Text))//检查新密码输入是否一致
                         {//编写sql语句实现修改密码
-
+                            string sql = string.Format(" update 员工 set password =N'{0}' where eid ='{1}'", TextBox_new.Text, eid);
+                            
                         }
                         else
                         {
