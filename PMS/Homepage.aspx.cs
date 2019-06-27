@@ -43,11 +43,11 @@ namespace PMS
                         Response.AppendCookie(cookiePwd);
                         if (reader["limit"].ToString().Replace(" ", "") == "False")
                         {
-                            Response.Redirect("WebForm1.aspx?m=" + tb_eid.Text);
+                            Response.Redirect("WebForm1.aspx?m=");
                         }
                         else
                         {
-                            Response.Redirect("WebForm2.aspx?m=" + tb_eid.Text);
+                            Response.Redirect("WebForm2.aspx?m=");
                         }
                     }
                     else

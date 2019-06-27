@@ -17,46 +17,59 @@ namespace PMS
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+            int pswt = 0;
             String eid = Session["eid"].ToString();
-            TextBox_old.Text = eid;
             String pwd = TextBox_old.Text.ToString().Trim();
             // 连接数据库，查询密码是否正确
             string sqlconn = "Data Source=(LocalDB)\\MSSQLLocalDB;" +
                    "AttachDbFilename='|DataDirectory|\\Database1.mdf';";
             using (SqlConnection cn = new SqlConnection())
             {
-                cn.ConnectionString = sqlconn; cn.Open();
-                string sqlstr = string.Format("SELECT * FROM [员工]");
-                SqlCommand cmd = new SqlCommand(sqlstr, cn);
-                SqlDataReader reader = cmd.ExecuteReader();//执行查找指令并返回查找结果
-                while (reader.Read())
+                cn.ConnectionString = sqlconn;
+                cn.Open();
+                String sql1 = "select * from 员工 where eid = " + eid;
+                SqlCommand cmd = new SqlCommand(sql1, cn);
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
                 {
-                    if (reader["eid"].ToString().Replace(" ", "") == eid && reader["password"].ToString().Replace(" ", "") == pwd)
+                    if (dr["eid"].ToString().Replace(" ", "") == eid && dr["password"].ToString().Replace(" ", "") == pwd)
                     {
-                        // 用HttpUtility解决中文乱码问题
-                        HttpCookie cookiePwd = new HttpCookie("eid", HttpUtility.UrlEncode(eid));
-                        Response.AppendCookie(cookiePwd);
-                        if (TextBox_new.Text.Equals(TextBox_new2.Text))//检查新密码输入是否一致
-                        {//编写sql语句实现修改密码
-
-                        }
-                        else
-                        {
-                            TextBox_old.Text = "";
-                            TextBox_new2.Text = "";
-                            TextBox_new.Text = "";
-                            Label_err.Text = "请检查输入！";
-                        }
-
+                        pswt = 1;
                     }
                     else
                     {
                         TextBox_old.Text = "";
-                        TextBox_new2.Text = "";
                         TextBox_new.Text = "";
-                        Label_err.Text = "密码错误！";
+                        TextBox_new2.Text = "";
+                        Label_err.Text = "账号或者密码错误！";
                     }
+                }
+                cn.Close();
+                if (pswt == 1)
+                {
+                    if (TextBox_new.Text.Equals(TextBox_new2.Text))
+                    {
+                        cn.ConnectionString = sqlconn;
+                        cn.Open();
+                        string sql2 = string.Format("update 员工 set password=N'{0}' where eid ='{1}'",
+                           TextBox_new.Text, eid);
 
+                        SqlCommand cmd2 = new SqlCommand(sql2, cn);
+                        int effectLine = cmd2.ExecuteNonQuery();
+
+                        if (effectLine == 1)
+                        {
+                            Label_err.Text = "修改成功";
+                        }
+                        else
+                        {
+                            Label_err.Text = "修改失败";
+                        }
+                    }
+                    else
+                    {
+                        Label_err.Text = "输入不一致";
+                    }
                 }
 
             }

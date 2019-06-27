@@ -55,7 +55,7 @@ namespace PMS
                 cn.Open();
                 string sqlstr = string.Format("INSERT INTO 员工(eid,ename,departID,age,password,limit)" +
                                               "VALUES('{0}',N'{1}','{2}','{3}',N'{4}','{5}')", TextBox_pid.Text, TextBox_pname.Text,
-                 DropDownList1.SelectedValue.ToString(), TextBox_age.Text, TextBox_psw.Text, TextBox_limit.Text);
+                 DropDownList1.SelectedValue.ToString(), TextBox_age.Text, TextBox_psw.Text, CheckBox_limit.Checked.ToString());
                 SqlCommand cmd = new SqlCommand(sqlstr, cn);
                 try
                 {
@@ -147,7 +147,7 @@ namespace PMS
                 cn.ConnectionString = sqlconn;
                 cn.Open();
                 string sql = string.Format("update 员工 set ename=N'{0}', departId='{1}', age='{2}',password=N'{3}',limit='{4}'where eid='{5}'",
-                    TextBox_pname.Text, DropDownList1.SelectedValue.ToString(),TextBox_age.Text, TextBox_psw.Text, TextBox_limit.Text, TextBox_pid.Text);
+                    TextBox_pname.Text, DropDownList1.SelectedValue.ToString(),TextBox_age.Text, TextBox_psw.Text, CheckBox_limit.Checked.ToString(), TextBox_pid.Text);
 
                 SqlCommand cmd = new SqlCommand(sql, cn);
                 int effectLine = cmd.ExecuteNonQuery();
