@@ -101,7 +101,7 @@
             <tr>
                 <td class="auto-style3">
                     <asp:Button ID="Button1" runat="server" Text="查询" OnClick="Button1_Click" />
-                    <asp:Button ID="Button2" runat="server" Text="打印" />
+                    <asp:Button ID="Button2" runat="server" Text="打印" OnClick="Button2_Click" />
                     <asp:Label ID="Label_yerr" runat="server" ForeColor="#CC0000"></asp:Label>
                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [departID] FROM [员工]"></asp:SqlDataSource>
                     <br />
@@ -123,7 +123,7 @@
                 </td>
                 &nbsp;<td class="auto-style11">
                     <asp:Button ID="Button3" runat="server" Text="查询" OnClick="Button3_Click" />
-                    <asp:Button ID="Button4" runat="server" Text="打印" />
+                    <asp:Button ID="Button4" runat="server" Text="打印" OnClick="Button4_Click" />
                     <asp:GridView ID="GridView2" runat="server" Width="339px" CellPadding="4" ForeColor="#333333" GridLines="None">
                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                         <EditRowStyle BackColor="#999999" />

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using KuanJia;
+using Microsoft.Office.Interop.Excel;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -11,7 +13,7 @@ namespace PMS
 {
     public partial class WebForm2 : System.Web.UI.Page
     {
-        String sqlconn = "Data Source=(LocalDB)\\MSSQLLocalDB;" + "AttachDbFilename='|DataDirectory|\\Database1.mdf';";
+        String sqlconn = "Data Source=(LocalDB)\\MSSQLLocalDB;" + "AttachDbFilename='|DataDirectory|\\Database2.mdf';";
         protected void Page_Load(object sender, EventArgs e)
         {
             ShowData1();
@@ -233,5 +235,64 @@ namespace PMS
             }
         }
 
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection cn = new SqlConnection())
+            {
+                ExcelOperator excel = new ExcelOperator();
+                excel.CreateExcel();//创建excel表
+                cn.ConnectionString = sqlconn;
+                cn.Open();
+                SqlCommand cmd = new SqlCommand("select * from 员工", cn);      //创建查询类实例
+                SqlDataAdapter adapter = new SqlDataAdapter(); //实例化数据适配器
+                adapter.SelectCommand = cmd;                   //让适配器执行SELECT命令
+                DataSet dataSet = new DataSet();            //实例化结果数据集
+                int n = adapter.Fill(dataSet);                 //将结果放入数据适配器，返回元祖个数
+                string[] fields = new string[] { "员工代号", "员工姓名", "所属部门", "年龄", "登入密码", "是否管理员" };
+                for (int indexColumn = 0; indexColumn < dataSet.Tables[0].Columns.Count; indexColumn++)
+                {
+                    Range range = excel[1, indexColumn + 1];
+                    range.Value2 = fields[indexColumn];
+                }
+                for (int indexRow = 0; indexRow < dataSet.Tables[0].Rows.Count; indexRow++)
+                {
+                    for (int indexColumn = 0; indexColumn < dataSet.Tables[0].Columns.Count; indexColumn++)
+                    {
+                        Range range = excel[indexRow + 2, indexColumn + 1];
+                        range.Value2 = dataSet.Tables[0].Rows[indexRow][indexColumn];
+                    }
+                }
+            }
+        }
+
+        protected void Button4_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection cn = new SqlConnection())
+            {
+                ExcelOperator excel = new ExcelOperator();
+                excel.CreateExcel();//创建excel表
+                cn.ConnectionString = sqlconn;
+                cn.Open();
+                SqlCommand cmd = new SqlCommand("select * from 部门", cn);      //创建查询类实例
+                SqlDataAdapter adapter = new SqlDataAdapter(); //实例化数据适配器
+                adapter.SelectCommand = cmd;                   //让适配器执行SELECT命令
+                DataSet dataSet = new DataSet();            //实例化结果数据集
+                int n = adapter.Fill(dataSet);                 //将结果放入数据适配器，返回元祖个数
+                string[] fields = new string[] { "部门代号", "部门名称", "部门主管" };
+                for (int indexColumn = 0; indexColumn < dataSet.Tables[0].Columns.Count; indexColumn++)
+                {
+                    Range range = excel[1, indexColumn + 1];
+                    range.Value2 = fields[indexColumn];
+                }
+                for (int indexRow = 0; indexRow < dataSet.Tables[0].Rows.Count; indexRow++)
+                {
+                    for (int indexColumn = 0; indexColumn < dataSet.Tables[0].Columns.Count; indexColumn++)
+                    {
+                        Range range = excel[indexRow + 2, indexColumn + 1];
+                        range.Value2 = dataSet.Tables[0].Rows[indexRow][indexColumn];
+                    }
+                }
+            }
+        }
     }
 }
