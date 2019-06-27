@@ -72,11 +72,11 @@ namespace PMS
                     if (first == 0)//修改检测标记和对应语句
                     {
                         first = 1;
-                        selectsql = selectsql + "dname= '" + TextBox_name.Text + "'";
+                        selectsql = selectsql + "dname= N'" + TextBox_name.Text + "'";
                     }
                     else
                     {
-                        selectsql = selectsql + "and dname= '" + TextBox_name.Text + "'";
+                        selectsql = selectsql + "and dname= N'" + TextBox_name.Text + "'";
                     }
                 }
                 if (CheckBox_de.Checked)

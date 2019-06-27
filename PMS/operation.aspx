@@ -94,7 +94,7 @@
                     <br /></td>
             </tr>
             <tr>
-                <td class="auto-style3">权限：<asp:CheckBox ID="CheckBox_limit" runat="server" />
+                <td class="auto-style3">权限：<asp:TextBox ID="TextBox_limit" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style3">
                     &nbsp;</td>
