@@ -57,16 +57,17 @@ namespace PMS
                                               "VALUES('{0}',N'{1}','{2}','{3}',N'{4}','{5}')", TextBox_pid.Text, TextBox_pname.Text,
                  DropDownList1.SelectedValue.ToString(), TextBox_age.Text, TextBox_psw.Text, TextBox_limit.Text);
                 SqlCommand cmd = new SqlCommand(sqlstr, cn);
-                //try
-                //{
-                //    System.Diagnostics.Debug.Write("123");
-                //    cmd.ExecuteNonQuery();
-                //}
-                //catch (SqlException sqlEx)
-                //{
-                //    Label1.Text = sqlEx.Message;
-                //}
+                try
+                {
+                    System.Diagnostics.Debug.Write("123");
+                    cmd.ExecuteNonQuery();
+                }
+                catch (SqlException sqlEx)
+                {
+                 Label1.Text = sqlEx.Message;
+                }
                 ShowData1();
+
             }
         }
 
@@ -123,7 +124,7 @@ namespace PMS
 
                 cn.ConnectionString = sqlconn;
                 cn.Open();
-                string sql = string.Format("delete from 部门 where departID='{0}'", TextBox_dname.Text);
+                string sql = string.Format("delete from 部门 where departID='{0}'", TextBox_did.Text);
 
                 SqlCommand cmd = new SqlCommand(sql, cn);
 
@@ -186,5 +187,7 @@ namespace PMS
 
             }
         }
+
+       
     }
 }
