@@ -53,21 +53,27 @@ namespace PMS
             {
                 cn.ConnectionString = sqlconn;
                 cn.Open();
-                string sqlstr = string.Format("INSERT INTO 员工(eid,ename,departID,age,password,limit)" +
+                if (TextBox_pid.Text.Trim() != ""&& TextBox_pname.Text.Trim() != ""&& TextBox_age.Text.Trim() != ""&& TextBox_psw.Text.Trim() != "")
+                {
+                    string sqlstr = string.Format("INSERT INTO 员工(eid,ename,departID,age,password,limit)" +
                                               "VALUES('{0}',N'{1}','{2}','{3}',N'{4}','{5}')", TextBox_pid.Text, TextBox_pname.Text,
                  DropDownList1.SelectedValue.ToString(), TextBox_age.Text, TextBox_psw.Text, CheckBox_limit.Checked.ToString());
-                SqlCommand cmd = new SqlCommand(sqlstr, cn);
-                try
-                {
-                    System.Diagnostics.Debug.Write("123");
-                    cmd.ExecuteNonQuery();
+                    SqlCommand cmd = new SqlCommand(sqlstr, cn);
+                    try
+                    {
+                        System.Diagnostics.Debug.Write("123");
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch
+                    {
+                        Label1.Text = "请检查是否已经重复id";
+                    }
+                    ShowData1();
                 }
-                catch 
+                else
                 {
-                    Label1.Text = "请检查是否已经重复id";
+                    Label1.Text = "不能为空";
                 }
-                ShowData1();
-
             }
         }
 
@@ -77,20 +83,27 @@ namespace PMS
             {
                 cn.ConnectionString = sqlconn;
                 cn.Open();
-                string sqlstr = string.Format("INSERT INTO 部门(departID,dname,director)" +
+                if (TextBox_did.Text.Trim() != "" && TextBox_dname.Text.Trim() != "" && TextBox_de.Text.Trim() != "")
+                {
+                    string sqlstr = string.Format("INSERT INTO 部门(departID,dname,director)" +
                                               "VALUES('{0}',N'{1}','{2}')", TextBox_did.Text, TextBox_dname.Text,
                   TextBox_de.Text);
-                SqlCommand cmd = new SqlCommand(sqlstr, cn);
-                try
-                {
-                    System.Diagnostics.Debug.Write("123");
-                    cmd.ExecuteNonQuery();
+                    SqlCommand cmd = new SqlCommand(sqlstr, cn);
+                    try
+                    {
+                        System.Diagnostics.Debug.Write("123");
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch
+                    {
+                        Label2.Text = "请检查是否重复id或者是否存在这名员工";
+                    }
+                    ShowData2();
                 }
-                catch 
+                else
                 {
-                    Label2.Text = "请检查是否重复id或者是否存在这名员工";
+                    Label2.Text = "不能为空";
                 }
-                ShowData2();
             }
         }
 
