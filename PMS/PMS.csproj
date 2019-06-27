@@ -76,7 +76,6 @@
     <Content Include="ChangeKey2.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Homepage.aspx" />
-    <Content Include="login.aspx" />
     <Content Include="Models\login_medicine.jpg" />
     <Content Include="Models\photo.jpg" />
     <Content Include="operation.aspx" />
@@ -115,13 +114,6 @@
     </Compile>
     <Compile Include="Homepage.aspx.designer.cs">
       <DependentUpon>Homepage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="login.aspx.cs">
-      <DependentUpon>login.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="login.aspx.designer.cs">
-      <DependentUpon>login.aspx</DependentUpon>
     </Compile>
     <Compile Include="operation.aspx.cs">
       <DependentUpon>operation.aspx</DependentUpon>
