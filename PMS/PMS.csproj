@@ -74,6 +74,7 @@
     </Content>
     <Content Include="ChangeKey1.aspx" />
     <Content Include="ChangeKey2.aspx" />
+    <Content Include="de.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Homepage.aspx" />
     <Content Include="Models\login_medicine.jpg" />
@@ -104,6 +105,13 @@
     </Compile>
     <Compile Include="ChangeKey2.aspx.designer.cs">
       <DependentUpon>ChangeKey2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="de.aspx.cs">
+      <DependentUpon>de.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="de.aspx.designer.cs">
+      <DependentUpon>de.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
