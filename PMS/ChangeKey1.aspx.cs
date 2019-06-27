@@ -41,8 +41,18 @@ namespace PMS
                         // 用HttpUtility解决中文乱码问题
                         HttpCookie cookiePwd = new HttpCookie("eid", HttpUtility.UrlEncode(eid));
                         Response.AppendCookie(cookiePwd);
-                        
-                        
+                        if (TextBox_new.Text.Equals(TextBox_new2.Text))//检查新密码输入是否一致
+                        {//编写sql语句实现修改密码
+
+                        }
+                        else
+                        {
+                            TextBox_old.Text = "";
+                            TextBox_new2.Text = "";
+                            TextBox_new.Text = "";
+                            Label_err.Text = "请检查输入！";
+                        }
+
                     }
                     else
                     {
@@ -53,6 +63,7 @@ namespace PMS
                     }
 
                 }
+                
             }
         }
     }
