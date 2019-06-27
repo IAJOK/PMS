@@ -23,6 +23,7 @@ namespace PMS
         {
             eid = tb_eid.Text.ToString().Trim();
             pwd = tb_pwd.Text.ToString().Trim();
+            Session["eid"] = eid;
 
             // 连接数据库，查询密码是否正确
             string sqlconn = "Data Source=(LocalDB)\\MSSQLLocalDB;" +
@@ -43,12 +44,10 @@ namespace PMS
                         if (reader["limit"].ToString().Replace(" ", "") == "False")
                         {
                             Response.Redirect("WebForm1.aspx?m=" + tb_eid.Text);
-                            Session["eid"] = tb_eid.Text;
                         }
                         else
                         {
                             Response.Redirect("WebForm2.aspx?m=" + tb_eid.Text);
-                            Session["eid"] = tb_eid.Text;
                         }
                     }
                     else

@@ -39,6 +39,9 @@
             text-align: center;
             height: 25px;
         }
+        .auto-style12 {
+            color: #FF0000;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -64,7 +67,7 @@
         </tr>
         <tr>
             <td class="auto-style11">&nbsp; 确认密码：<asp:TextBox ID="TextBox_new2" runat="server"></asp:TextBox>
-                <asp:Label ID="Label_err" runat="server"></asp:Label>
+                <asp:Label ID="Label_err" runat="server" CssClass="auto-style12"></asp:Label>
             </td>
         </tr>
         <tr>
