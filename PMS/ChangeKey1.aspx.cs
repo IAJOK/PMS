@@ -41,14 +41,8 @@ namespace PMS
                         // 用HttpUtility解决中文乱码问题
                         HttpCookie cookiePwd = new HttpCookie("eid", HttpUtility.UrlEncode(eid));
                         Response.AppendCookie(cookiePwd);
-                        if (reader["limit"].ToString().Replace(" ", "") == "False")
-                        {
-                            Response.Redirect("registe.aspx");
-                        }
-                        else
-                        {
-                            Response.Redirect("registe.aspx");
-                        }
+                        
+                        
                     }
                     else
                     {
