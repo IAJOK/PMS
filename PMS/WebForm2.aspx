@@ -60,40 +60,49 @@
     </td>
             </tr>
             <tr>
-                <td class="auto-style9">员工代号：<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                <td class="auto-style9">员工代号：<asp:TextBox ID="TextBox_yid" runat="server"></asp:TextBox>
+                    <asp:CheckBox ID="CheckBox_yid" runat="server" />
                 </td>
-                <td class="auto-style9">部门代号：<asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style10">员工姓名：<asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
-                </td>
-                <td class="auto-style10">部门名称：<asp:TextBox ID="TextBox6" runat="server"></asp:TextBox>
+                <td class="auto-style9">部门代号：<asp:TextBox ID="TextBox_id" runat="server"></asp:TextBox>
+                    <asp:CheckBox ID="CheckBox_id" runat="server" />
                 </td>
             </tr>
             <tr>
-                <td class="auto-style9">所属部门：<asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="departID" DataValueField="departID">
+                <td class="auto-style10">员工姓名：<asp:TextBox ID="TextBox_yname" runat="server"></asp:TextBox>
+                    <asp:CheckBox ID="CheckBox_yname" runat="server" />
+                </td>
+                <td class="auto-style10">部门名称：<asp:TextBox ID="TextBox_name" runat="server"></asp:TextBox>
+                    <asp:CheckBox ID="CheckBox_name" runat="server" />
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style9">所属部门：<asp:DropDownList ID="DropDownList_dep" runat="server" DataSourceID="SqlDataSource1" DataTextField="departID" DataValueField="departID">
                     </asp:DropDownList>
+                    <asp:CheckBox ID="CheckBox_dep" runat="server" />
                 </td>
-                <td class="auto-style9">部门主管：<asp:TextBox ID="TextBox7" runat="server"></asp:TextBox>
+                <td class="auto-style9">部门主管：<asp:TextBox ID="TextBox_de" runat="server"></asp:TextBox>
+                    <asp:CheckBox ID="CheckBox_de" runat="server" />
                 </td>
             </tr>
             <tr>
                 <td class="auto-style8">&nbsp; 年龄：&nbsp;&nbsp;&nbsp;
-                    <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_age" runat="server"></asp:TextBox>
+                    <asp:CheckBox ID="CheckBox_age" runat="server" />
                 </td>
-                <td class="auto-style7">&nbsp;&nbsp;</td>
+                <td class="auto-style7">&nbsp;&nbsp;<asp:Label ID="Label_err" runat="server" ForeColor="#CC0000"></asp:Label>
+                    </td>
             </tr>
             <tr>
-                <td class="auto-style3">登入密码：：<asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
+                <td class="auto-style3">登入密码：：<asp:TextBox ID="TextBox_key" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style3">
                     <br /></td>
             </tr>
             <tr>
                 <td class="auto-style3">
-                    <asp:Button ID="Button1" runat="server" Text="查询" />
+                    <asp:Button ID="Button1" runat="server" Text="查询" OnClick="Button1_Click" />
                     <asp:Button ID="Button2" runat="server" Text="打印" />
+                    <asp:Label ID="Label_yerr" runat="server" ForeColor="#CC0000"></asp:Label>
                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [departID] FROM [员工]"></asp:SqlDataSource>
                     <br />
                     <div class="auto-style12">
@@ -113,7 +122,7 @@
                     </div>
                 </td>
                 &nbsp;<td class="auto-style11">
-                    <asp:Button ID="Button3" runat="server" Text="查询" />
+                    <asp:Button ID="Button3" runat="server" Text="查询" OnClick="Button3_Click" />
                     <asp:Button ID="Button4" runat="server" Text="打印" />
                     <asp:GridView ID="GridView2" runat="server" Width="339px" CellPadding="4" ForeColor="#333333" GridLines="None">
                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />

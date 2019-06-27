@@ -60,6 +60,10 @@
         }
         .auto-style21 {
             width: 459px;
+            height: 33px;
+        }
+        .auto-style22 {
+            height: 33px;
         }
     </style>
 </asp:Content>
@@ -117,7 +121,7 @@
                 <td class="auto-style21">
                     <br />
                 </td>
-                <td>
+                <td class="auto-style22">
                     <asp:Button ID="Button2" runat="server" Text="查询" OnClick="Button2_Click1" />
                     <asp:Button ID="Button3" runat="server" Text="打印" />
                     <asp:Label ID="Label_err" runat="server" ForeColor="#CC0000"></asp:Label>
