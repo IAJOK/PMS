@@ -78,7 +78,7 @@
                     </asp:DropDownList>
                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [部门]"></asp:SqlDataSource>
                 </td>
-                <td class="auto-style10">部门主管：<asp:TextBox ID="TextBox_de" runat="server"></asp:TextBox>
+                <td class="auto-style10">部门主管：<asp:TextBox ID="TextBox_de" runat="server" Height="19px"></asp:TextBox>
                 </td>
             </tr>
             <tr>
