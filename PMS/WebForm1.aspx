@@ -70,7 +70,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <p>
          <A href="Homepage.aspx" class="auto-style6"><span class="auto-style5">首页</span></A>&nbsp;&nbsp;         <A href="WebForm1.aspx" class="auto-style6"><span class="auto-style5">查询操作</span></A>&nbsp;&nbsp;      
-         <A href="ChangeKey1.aspx" class="auto-style6"><span class="auto-style5">修改密码</span></A>&nbsp;&nbsp;         <A href="about.aspx" class="auto-style6"><span class="auto-style5">关于</span></A>
+         <A href="ChangeKey1.aspx" class="auto-style6"><span class="auto-style5">修改密码</span></A>&nbsp;&nbsp;         <A href="about_emplo.aspx" class="auto-style6"><span class="auto-style5">关于</span></A>
         <hr />
     <p>
         <table align="center" class="auto-style2">
