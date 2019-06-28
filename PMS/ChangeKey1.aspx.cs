@@ -51,7 +51,7 @@ namespace PMS
                     {
                         cn.ConnectionString = sqlconn;
                         cn.Open();
-                        string sql2 = string.Format("update 员工 set password=N'{0}' where eid ='{1}'",
+                        string sql2 = string.Format("update 员工 set TextBox=N'{0}' where eid ='{1}'",
                            TextBox_new.Text,eid);
 
                         SqlCommand cmd2 = new SqlCommand(sql2, cn);

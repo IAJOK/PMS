@@ -44,8 +44,11 @@
             height: 27px;
             text-align: left;
         }
-        .auto-style13 {
-            color: #0066FF;
+        .auto-style14 {
+            color: #FF0000;
+        }
+        .auto-style15 {
+            color: #FF0000;
             font-size: x-large;
         }
         </style>
@@ -55,8 +58,7 @@
         <A href="Homepage.aspx" class="auto-style6"><span class="auto-style5">首页</span></A>&nbsp;&nbsp;         <A href="WebForm2.aspx" class="auto-style6"><span class="auto-style5">查询操作</span></A>&nbsp;&nbsp;         <A href="operation.aspx" class="auto-style6"><span class="auto-style5">增删改操作</span></A>&nbsp;&nbsp;      
          <A href="ChangeKey2.aspx" class="auto-style6"><span class="auto-style5">修改密码</span></A>&nbsp;&nbsp;         <A href="about.aspx" class="auto-style6"><span class="auto-style5">关于</span></A>
     <hr />
-        <A href="Batchdelete.aspx" class="auto-style6"><span class="auto-style13">批量删除操作</span></A>
-    <p>
+        &nbsp;<p>
         <table align="center" class="auto-style2">
             <tr>
                 <td class="auto-style4">管理员工信息
@@ -109,8 +111,8 @@
                     <asp:Button ID="Button1" runat="server" Text="录入" OnClick="Button1_Click" />
                     <asp:Button ID="Button2" runat="server" Text="删除" OnClick="Button2_Click" />
                     <asp:Button ID="Button3" runat="server" Text="修改" OnClick="Button3_Click"/>
-                    <asp:Label ID="Label1" runat="server"></asp:Label>
-                    <br />
+                    <asp:Label ID="Label1" runat="server" CssClass="auto-style14"></asp:Label>
+        <A href="Batchdelete.aspx" class="auto-style6"><span class="auto-style15">批量删除操作</span></A><br />
                     <div class="auto-style12">
                         <asp:GridView ID="GridView1" runat="server"  Width="332px" CellPadding="4" ForeColor="#333333" GridLines="None">
                             <AlternatingRowStyle BackColor="White" />
@@ -131,8 +133,8 @@
                     <asp:Button ID="Button4" runat="server" Text="录入" OnClick="Button4_Click" />
                     <asp:Button ID="Button5" runat="server" Text="删除" OnClick="Button5_Click"/>
                     <asp:Button ID="Button6" runat="server" Text="修改" OnClick="Button6_Click"/>
-                    <asp:Label ID="Label2" runat="server"></asp:Label>
-                    <asp:GridView ID="GridView2" runat="server" Width="339px" CellPadding="4" ForeColor="#333333" GridLines="None">
+                    <asp:Label ID="Label2" runat="server" CssClass="auto-style14"></asp:Label>
+        <A href="Batchdelete.aspx" class="auto-style6"><span class="auto-style15">批量删除操作</span></A><asp:GridView ID="GridView2" runat="server" Width="339px" CellPadding="4" ForeColor="#333333" GridLines="None">
                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                         <EditRowStyle BackColor="#999999" />
                         <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />

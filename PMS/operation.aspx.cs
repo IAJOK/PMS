@@ -160,17 +160,19 @@ namespace PMS
                 cn.ConnectionString = sqlconn;
                 cn.Open();
                 string sql = string.Format("delete from 部门 where departID='{0}'", TextBox_did.Text);
-
-                SqlCommand cmd = new SqlCommand(sql, cn);
-
-                int effectLine = cmd.ExecuteNonQuery();
+                int effectLine=0;
+                try
+                {
+                    SqlCommand cmd = new SqlCommand(sql, cn);
+                    effectLine = cmd.ExecuteNonQuery();
+                }
+                catch {
+                    Label2.Text = "删除失败，请检查你选择的部门是否仍有员工";
+                }
+                
                 if (effectLine == 1)
                 {
                     ShowData2();
-                }
-                else
-                {
-                    Label2.Text = "删除失败";
                 }
             }
         }
