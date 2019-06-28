@@ -255,6 +255,7 @@ namespace PMS
             {
                 using (SqlConnection cn = new SqlConnection())
                 {
+                    
                     CheckBox cb = (CheckBox)dgi.FindControl("cbSelect");
                     if (cb.Checked)
                     {
