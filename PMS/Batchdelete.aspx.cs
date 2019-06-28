@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+
 namespace PMS
 {
     public partial class Batchdelete : System.Web.UI.Page
@@ -14,13 +15,10 @@ namespace PMS
         String sqlconn = "Data Source=(LocalDB)\\MSSQLLocalDB;" + "AttachDbFilename='|DataDirectory|\\Database1.mdf';";
         protected void Page_Load(object sender, EventArgs e)
         {
-           
-            ShowData1();
-            ShowData2();
             if (!Page.IsPostBack)
             {
                 btnDelete.Attributes.Add("onclick", "return confirm('您真的要删除该行数据吗？');");
-                ShowData1();
+
             }
            
         }
@@ -240,24 +238,23 @@ namespace PMS
         protected void CheckAll(object sender, EventArgs e)
         {
             CheckBox cbAll = (CheckBox)sender;
-            if (cbAll.Text == "全选")
-            {
                 foreach (System.Web.UI.WebControls.GridViewRow gr in this.GridView1.Rows)
                 {
                     CheckBox chk = (CheckBox)gr.FindControl("cbSelect");
                     chk.Checked = cbAll.Checked;
                 }
-            }
         }
         protected void btnDelete_Click(object sender, EventArgs e)
         {
             foreach (GridViewRow dgi in this.GridView1.Rows)
             {
-                using (SqlConnection cn = new SqlConnection())
+                CheckBox cb = (CheckBox)dgi.FindControl("cbSelect");
+                if (cb.Checked)
                 {
-                    CheckBox cb = (CheckBox)dgi.FindControl("cbSelect");
-                    if (cb.Checked)
+                    using (SqlConnection cn = new SqlConnection())
                     {
+                        cn.ConnectionString = sqlconn;
+                        cn.Open();
                         Int32 index = dgi.RowIndex;
                         DataKey key = this.GridView1.DataKeys[index];
                         String newsid = key.Values["eid"].ToString();
@@ -265,15 +262,17 @@ namespace PMS
                         String strSql = "delete from 员工 where eid = '" + newsid + "'";
                         SqlCommand com = new SqlCommand(strSql, cn);
                         Int32 num = com.ExecuteNonQuery();
+
                         if (num > 0)
                         {
                             Label_yerr.Text = "成功删除所选！";
                         }
                     }
+
                 }
             }
             this.GridView1.PageIndex = 0;
-            ShowData1();
+            
         }
 
         
