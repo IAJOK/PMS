@@ -135,9 +135,9 @@
 
                 &nbsp;<td class="auto-style11">
                     <asp:Button ID="Button3" runat="server" Text="查询" OnClick="Button3_Click" />
-                 <asp:Button ID="btnDelete0" runat="server" Text="删除所选" OnClick="btnDelete_Click2" Css />
+                 <asp:Button ID="btnDelete2" runat="server" Text="删除所选" OnClick="btnDelete_Click2" Css />
                     <asp:CheckBox ID="cbAll0" runat="server" Text="全选" AutoPostBack="True" OnCheckedChanged="CheckAll2" Css />
-                    <asp:GridView ID="GridView2" runat="server" Width="339px" CellPadding="4" ForeColor="#333333" GridLines="None">
+                    <asp:GridView ID="GridView2" runat="server" Width="339px" CellPadding="4" ForeColor="#333333" GridLines="None" DataKeyNames="departID">
                         <Columns>
                      <asp:TemplateField>
                          <ItemTemplate>

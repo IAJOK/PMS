@@ -18,11 +18,11 @@ namespace PMS
             if (!Page.IsPostBack)
             {
                 btnDelete.Attributes.Add("onclick", "return confirm('您真的要删除该行数据吗？');");
-
+                btnDelete2.Attributes.Add("onclick", "return confirm('您真的要删除该行数据吗？');");
             }
-           
+
         }
-        
+
         void ShowData1()
         {
             using (SqlConnection cn = new SqlConnection())
@@ -35,7 +35,7 @@ namespace PMS
                 SqlDataReader dr = cmd.ExecuteReader();
                 GridView1.DataSource = dr;
                 GridView1.DataBind();
-                
+
             }
         }
         void ShowData2()
@@ -238,11 +238,11 @@ namespace PMS
         protected void CheckAll(object sender, EventArgs e)
         {
             CheckBox cbAll = (CheckBox)sender;
-                foreach (System.Web.UI.WebControls.GridViewRow gr in this.GridView1.Rows)
-                {
-                    CheckBox chk = (CheckBox)gr.FindControl("cbSelect");
-                    chk.Checked = cbAll.Checked;
-                }
+            foreach (System.Web.UI.WebControls.GridViewRow gr in this.GridView1.Rows)
+            {
+                CheckBox chk = (CheckBox)gr.FindControl("cbSelect");
+                chk.Checked = cbAll.Checked;
+            }
         }
         protected void btnDelete_Click(object sender, EventArgs e)
         {
@@ -258,8 +258,10 @@ namespace PMS
                         Int32 index = dgi.RowIndex;
                         DataKey key = this.GridView1.DataKeys[index];
                         String newsid = key.Values["eid"].ToString();
+
                         //以下执行删除操作
                         String strSql = "delete from 员工 where eid = '" + newsid + "'";
+
                         try
                         {
                             SqlCommand com = new SqlCommand(strSql, cn);
@@ -275,13 +277,13 @@ namespace PMS
                         }
 
 
-                       
+
                     }
 
                 }
             }
             this.GridView1.PageIndex = 0;
-            
+
         }
 
         protected void CheckAll2(object sender, EventArgs e)
@@ -295,7 +297,7 @@ namespace PMS
         }
         protected void btnDelete_Click2(object sender, EventArgs e)
         {
-            foreach (GridViewRow dgi in this.GridView1.Rows)
+            foreach (GridViewRow dgi in this.GridView2.Rows)
             {
                 CheckBox cb = (CheckBox)dgi.FindControl("cbSelect2");
                 if (cb.Checked)
@@ -305,7 +307,7 @@ namespace PMS
                         cn.ConnectionString = sqlconn;
                         cn.Open();
                         Int32 index = dgi.RowIndex;
-                        DataKey key = this.GridView1.DataKeys[index];
+                        DataKey key = this.GridView2.DataKeys[index];
                         String newsid = key.Values["departID"].ToString();
                         //以下执行删除操作
                         String strSql = "delete from 部门 where departID = '" + newsid + "'";
@@ -315,21 +317,19 @@ namespace PMS
                             Int32 num = com.ExecuteNonQuery();
                             if (num > 0)
                             {
-                                Label_yerr.Text = "成功删除所选！";
+                                Label_err.Text = "成功删除所选！";
                             }
                         }
                         catch
                         {
-                            Label_yerr.Text = "不能删除有员工存在的部门！";
+                            Label_err.Text = "不能删除有员工存在的部门！";
                         }
-
-
 
                     }
 
                 }
             }
-            this.GridView1.PageIndex = 0;
+            this.GridView2.PageIndex = 0;
 
         }
 
