@@ -70,7 +70,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <p>
          <A href="Homepage.aspx" class="auto-style6"><span class="auto-style5">首页</span></A>&nbsp;&nbsp;         <A href="WebForm1.aspx" class="auto-style6"><span class="auto-style5">查询操作</span></A>&nbsp;&nbsp;      
-         <A href="ChangeKey1.aspx" class="auto-style6"><span class="auto-style5">修改密码</span></A>&nbsp;&nbsp;         <A href="about.aspx" class="auto-style6"><span class="auto-style5">关于</span></A>
+         <A href="ChangeKey1.aspx" class="auto-style6"><span class="auto-style5">修改密码</span></A>&nbsp;&nbsp;         <A href="about_emplo.aspx" class="auto-style6"><span class="auto-style5">关于</span></A>
         <hr />
     <p>
         <table align="center" class="auto-style2">
@@ -105,8 +105,7 @@
             <tr>
                 <td class="auto-style15">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:Button ID="Button1" runat="server" Text="打印" OnClick="Button1_Click" />
-                </td>
+                    </td>
                 <td class="auto-style10">部门名称：<asp:TextBox ID="TextBox_name" runat="server"></asp:TextBox>
                     <asp:CheckBox ID="CheckBox_name" runat="server" />
                 </td>
@@ -123,7 +122,6 @@
                 </td>
                 <td class="auto-style22">
                     <asp:Button ID="Button2" runat="server" Text="查询" OnClick="Button2_Click1" />
-                    <asp:Button ID="Button3" runat="server" Text="打印" OnClick="Button3_Click" />
                     <asp:Label ID="Label_err" runat="server" ForeColor="#CC0000"></asp:Label>
                     <br />
                 </td>

@@ -1,6 +1,4 @@
-﻿using KuanJia;
-using Microsoft.Office.Interop.Excel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -11,14 +9,22 @@ using System.Web.UI.WebControls;
 
 namespace PMS
 {
-    public partial class WebForm2 : System.Web.UI.Page
+    public partial class Batchdelete : System.Web.UI.Page
     {
         String sqlconn = "Data Source=(LocalDB)\\MSSQLLocalDB;" + "AttachDbFilename='|DataDirectory|\\Database1.mdf';";
         protected void Page_Load(object sender, EventArgs e)
         {
+           
             ShowData1();
             ShowData2();
+            if (!Page.IsPostBack)
+            {
+                btnDelete.Attributes.Add("onclick", "return confirm('您真的要删除该行数据吗？');");
+                ShowData1();
+            }
+           
         }
+        
         void ShowData1()
         {
             using (SqlConnection cn = new SqlConnection())
@@ -31,7 +37,7 @@ namespace PMS
                 SqlDataReader dr = cmd.ExecuteReader();
                 GridView1.DataSource = dr;
                 GridView1.DataBind();
-
+                
             }
         }
         void ShowData2()
@@ -48,10 +54,6 @@ namespace PMS
 
             }
         }
-
-
-
-
         protected void Button1_Click(object sender, EventArgs e)
         {
             using (SqlConnection cn = new SqlConnection())
@@ -235,126 +237,45 @@ namespace PMS
             }
         }
 
-        protected void Button2_Click(object sender, EventArgs e)
+        protected void CheckAll(object sender, EventArgs e)
         {
-            using (SqlConnection cn = new SqlConnection())
+            CheckBox cbAll = (CheckBox)sender;
+            if (cbAll.Text == "全选")
             {
-                ExcelOperator excel = new ExcelOperator();
-                excel.CreateExcel();//创建excel表
-                cn.ConnectionString = sqlconn;
-                cn.Open();
-                string sqlstr = string.Format("SELECT * FROM 员工 WHERE eid = N'{0}'", TextBox_yid.Text);
-                SqlCommand cmd = new SqlCommand(sqlstr, cn);
-                SqlDataAdapter adapter = new SqlDataAdapter(); //实例化数据适配器
-                adapter.SelectCommand = cmd;                   //让适配器执行SELECT命令
-                DataSet dataSet = new DataSet();            //实例化结果数据集
-                int n = adapter.Fill(dataSet);                 //将结果放入数据适配器，返回元祖个数
-                string[] fields = new string[] { "员工代号", "员工姓名", "所属部门", "年龄", "登入密码", "是否管理员" };
-                for (int indexColumn = 0; indexColumn < dataSet.Tables[0].Columns.Count; indexColumn++)
+                foreach (System.Web.UI.WebControls.GridViewRow gr in this.GridView1.Rows)
                 {
-                    Range range = excel[1, indexColumn + 1];
-                    range.Value2 = fields[indexColumn];
+                    CheckBox chk = (CheckBox)gr.FindControl("cbSelect");
+                    chk.Checked = cbAll.Checked;
                 }
-                for (int indexRow = 0; indexRow < dataSet.Tables[0].Rows.Count; indexRow++)
+            }
+        }
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            foreach (GridViewRow dgi in this.GridView1.Rows)
+            {
+                using (SqlConnection cn = new SqlConnection())
                 {
-                    for (int indexColumn = 0; indexColumn < dataSet.Tables[0].Columns.Count; indexColumn++)
+                    CheckBox cb = (CheckBox)dgi.FindControl("cbSelect");
+                    if (cb.Checked)
                     {
-                        Range range = excel[indexRow + 2, indexColumn + 1];
-                        range.Value2 = dataSet.Tables[0].Rows[indexRow][indexColumn];
+                        Int32 index = dgi.RowIndex;
+                        DataKey key = this.GridView1.DataKeys[index];
+                        String newsid = key.Values["eid"].ToString();
+                        //以下执行删除操作
+                        String strSql = "delete from 员工 where eid = '" + newsid + "'";
+                        SqlCommand com = new SqlCommand(strSql, cn);
+                        Int32 num = com.ExecuteNonQuery();
+                        if (num > 0)
+                        {
+                            Label_yerr.Text = "成功删除所选！";
+                        }
                     }
                 }
             }
+            this.GridView1.PageIndex = 0;
+            ShowData1();
         }
 
-        protected void Button4_Click(object sender, EventArgs e)
-        {
-            using (SqlConnection cn = new SqlConnection())
-            {
-                ExcelOperator excel = new ExcelOperator();
-                excel.CreateExcel();//创建excel表
-                cn.ConnectionString = sqlconn;
-                cn.Open();
-                string sqlstr = string.Format("SELECT * FROM 部门 WHERE departID = N'{0}'", TextBox_id.Text);
-                SqlCommand cmd = new SqlCommand(sqlstr, cn);
-                SqlDataAdapter adapter = new SqlDataAdapter(); //实例化数据适配器
-                adapter.SelectCommand = cmd;                   //让适配器执行SELECT命令
-                DataSet dataSet = new DataSet();            //实例化结果数据集
-                int n = adapter.Fill(dataSet);                 //将结果放入数据适配器，返回元祖个数
-                string[] fields = new string[] { "部门代号", "部门名称", "部门主管" };
-                for (int indexColumn = 0; indexColumn < dataSet.Tables[0].Columns.Count; indexColumn++)
-                {
-                    Range range = excel[1, indexColumn + 1];
-                    range.Value2 = fields[indexColumn];
-                }
-                for (int indexRow = 0; indexRow < dataSet.Tables[0].Rows.Count; indexRow++)
-                {
-                    for (int indexColumn = 0; indexColumn < dataSet.Tables[0].Columns.Count; indexColumn++)
-                    {
-                        Range range = excel[indexRow + 2, indexColumn + 1];
-                        range.Value2 = dataSet.Tables[0].Rows[indexRow][indexColumn];
-                    }
-                }
-            }
-        }
-
-        protected void Button5_Click(object sender, EventArgs e)
-        {
-            using (SqlConnection cn = new SqlConnection())
-            {
-                ExcelOperator excel = new ExcelOperator();
-                excel.CreateExcel();//创建excel表
-                cn.ConnectionString = sqlconn;
-                cn.Open();
-                SqlCommand cmd = new SqlCommand("select * from 员工", cn);      //创建查询类实例
-                SqlDataAdapter adapter = new SqlDataAdapter(); //实例化数据适配器
-                adapter.SelectCommand = cmd;                   //让适配器执行SELECT命令
-                DataSet dataSet = new DataSet();            //实例化结果数据集
-                int n = adapter.Fill(dataSet);                 //将结果放入数据适配器，返回元祖个数
-                string[] fields = new string[] { "员工代号", "员工姓名", "所属部门", "年龄", "登入密码", "是否管理员" };
-                for (int indexColumn = 0; indexColumn < dataSet.Tables[0].Columns.Count; indexColumn++)
-                {
-                    Range range = excel[1, indexColumn + 1];
-                    range.Value2 = fields[indexColumn];
-                }
-                for (int indexRow = 0; indexRow < dataSet.Tables[0].Rows.Count; indexRow++)
-                {
-                    for (int indexColumn = 0; indexColumn < dataSet.Tables[0].Columns.Count; indexColumn++)
-                    {
-                        Range range = excel[indexRow + 2, indexColumn + 1];
-                        range.Value2 = dataSet.Tables[0].Rows[indexRow][indexColumn];
-                    }
-                }
-            }
-        }
-
-        protected void Button6_Click(object sender, EventArgs e)
-        {
-            using (SqlConnection cn = new SqlConnection())
-            {
-                ExcelOperator excel = new ExcelOperator();
-                excel.CreateExcel();//创建excel表
-                cn.ConnectionString = sqlconn;
-                cn.Open();
-                SqlCommand cmd = new SqlCommand("select * from 部门", cn);      //创建查询类实例
-                SqlDataAdapter adapter = new SqlDataAdapter(); //实例化数据适配器
-                adapter.SelectCommand = cmd;                   //让适配器执行SELECT命令
-                DataSet dataSet = new DataSet();            //实例化结果数据集
-                int n = adapter.Fill(dataSet);                 //将结果放入数据适配器，返回元祖个数
-                string[] fields = new string[] { "部门代号", "部门名称", "部门主管" };
-                for (int indexColumn = 0; indexColumn < dataSet.Tables[0].Columns.Count; indexColumn++)
-                {
-                    Range range = excel[1, indexColumn + 1];
-                    range.Value2 = fields[indexColumn];
-                }
-                for (int indexRow = 0; indexRow < dataSet.Tables[0].Rows.Count; indexRow++)
-                {
-                    for (int indexColumn = 0; indexColumn < dataSet.Tables[0].Columns.Count; indexColumn++)
-                    {
-                        Range range = excel[indexRow + 2, indexColumn + 1];
-                        range.Value2 = dataSet.Tables[0].Rows[indexRow][indexColumn];
-                    }
-                }
-            }
-        }
+        
     }
 }

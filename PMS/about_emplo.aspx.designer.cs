@@ -10,6 +10,6 @@
 namespace PMS {
     
     
-    public partial class about {
+    public partial class about_director {
     }
 }
