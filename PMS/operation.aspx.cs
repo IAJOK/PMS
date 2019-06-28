@@ -53,21 +53,27 @@ namespace PMS
             {
                 cn.ConnectionString = sqlconn;
                 cn.Open();
-                string sqlstr = string.Format("INSERT INTO 员工(eid,ename,departID,age,password,limit)" +
+                if (TextBox_pid.Text.Trim() != ""&& TextBox_pname.Text.Trim() != ""&& TextBox_age.Text.Trim() != ""&& TextBox_psw.Text.Trim() != "")
+                {
+                    string sqlstr = string.Format("INSERT INTO 员工(eid,ename,departID,age,password,limit)" +
                                               "VALUES('{0}',N'{1}','{2}','{3}',N'{4}','{5}')", TextBox_pid.Text, TextBox_pname.Text,
                  DropDownList1.SelectedValue.ToString(), TextBox_age.Text, TextBox_psw.Text, CheckBox_limit.Checked.ToString());
-                SqlCommand cmd = new SqlCommand(sqlstr, cn);
-                try
-                {
-                    System.Diagnostics.Debug.Write("123");
-                    cmd.ExecuteNonQuery();
+                    SqlCommand cmd = new SqlCommand(sqlstr, cn);
+                    try
+                    {
+                        System.Diagnostics.Debug.Write("123");
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch
+                    {
+                        Label1.Text = "请检查是否已经重复id";
+                    }
+                    ShowData1();
                 }
-                catch (SqlException sqlEx)
+                else
                 {
-                 Label1.Text = sqlEx.Message;
+                    Label1.Text = "不能为空";
                 }
-                ShowData1();
-
             }
         }
 
@@ -77,20 +83,27 @@ namespace PMS
             {
                 cn.ConnectionString = sqlconn;
                 cn.Open();
-                string sqlstr = string.Format("INSERT INTO 部门(departID,dname,director)" +
+                if (TextBox_did.Text.Trim() != "" && TextBox_dname.Text.Trim() != "" && TextBox_de.Text.Trim() != "")
+                {
+                    string sqlstr = string.Format("INSERT INTO 部门(departID,dname,director)" +
                                               "VALUES('{0}',N'{1}','{2}')", TextBox_did.Text, TextBox_dname.Text,
                   TextBox_de.Text);
-                SqlCommand cmd = new SqlCommand(sqlstr, cn);
-                try
-                {
-                    System.Diagnostics.Debug.Write("123");
-                    cmd.ExecuteNonQuery();
+                    SqlCommand cmd = new SqlCommand(sqlstr, cn);
+                    try
+                    {
+                        System.Diagnostics.Debug.Write("123");
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch
+                    {
+                        Label2.Text = "请检查是否重复id或者是否存在这名员工";
+                    }
+                    ShowData2();
                 }
-                catch (SqlException sqlEx)
+                else
                 {
-                    Label2.Text = sqlEx.Message;
+                    Label2.Text = "不能为空";
                 }
-                ShowData2();
             }
         }
 
@@ -146,48 +159,120 @@ namespace PMS
             {
                 cn.ConnectionString = sqlconn;
                 cn.Open();
-                string sql = string.Format("update 员工 set ename=N'{0}', departId='{1}', age='{2}',password=N'{3}',limit='{4}'where eid='{5}'",
-                    TextBox_pname.Text, DropDownList1.SelectedValue.ToString(),TextBox_age.Text, TextBox_psw.Text, CheckBox_limit.Checked.ToString(), TextBox_pid.Text);
-
-                SqlCommand cmd = new SqlCommand(sql, cn);
-                int effectLine = cmd.ExecuteNonQuery();
-
-                if (effectLine == 1)
+                if (TextBox_pid.Text.Trim() != "")
                 {
-                    ShowData1();
+                    if (TextBox_pname.Text.Trim() != "")
+                    {
+                        string sql = string.Format("update 员工 set ename=N'{0}' where eid='{1}'",
+                        TextBox_pname.Text, TextBox_pid.Text);
+
+                        SqlCommand cmd = new SqlCommand(sql, cn);
+
+                        int effectLine = cmd.ExecuteNonQuery();
+                        if (effectLine == 1)
+                        {
+                            ShowData1();
+                        }
+                        else
+                        {
+                            Label1.Text = "更新失败";
+                        }
+                    }
+                    if (TextBox_age.Text.Trim() != "")
+                    {
+                        string sql = string.Format("update 员工 set age='{0}' where eid='{1}'",
+                        TextBox_age.Text, TextBox_pid.Text);
+
+                        SqlCommand cmd = new SqlCommand(sql, cn);
+
+                        int effectLine = cmd.ExecuteNonQuery();
+                        if (effectLine == 1)
+                        {
+                            ShowData1();
+                        }
+                        else
+                        {
+                            Label1.Text = "更新失败";
+                        }
+                    }
+                    if (TextBox_psw.Text.Trim() != "")
+                    {
+                        string sql = string.Format("update 员工 set password =N'{0}' where eid='{1}'",
+                        TextBox_psw.Text, TextBox_pid.Text);
+
+                        SqlCommand cmd = new SqlCommand(sql, cn);
+
+                        int effectLine = cmd.ExecuteNonQuery();
+                        if (effectLine == 1)
+                        {
+                            ShowData1();
+                        }
+                        else
+                        {
+                            Label1.Text = "更新失败";
+                        }
+                    }
+
                 }
                 else
                 {
-                    Label1.Text = "更新失败";
+                    Label1.Text = "代号不能为空";
                 }
-
             }
-        }
-
-        protected void Button6_Click(object sender, EventArgs e)
-        {
+        }         
+            protected void Button6_Click(object sender, EventArgs e)
+            {
             using (SqlConnection cn = new SqlConnection())
             {
                 cn.ConnectionString = sqlconn;
                 cn.Open();
-                string sql = string.Format("update 部门 set departID='{0}', dname=N'{1}', director='{2}'where eid='{3}'",
-                    TextBox_did.Text, TextBox_dname.Text, TextBox_de.Text,TextBox_pid.Text);
-
-                SqlCommand cmd = new SqlCommand(sql, cn);
-                int effectLine = cmd.ExecuteNonQuery();
-
-                if (effectLine == 1)
+                if (TextBox_did.Text.Trim() != "")
                 {
-                    ShowData2();
+                    if (TextBox_dname.Text.Trim() != "")
+                    {
+                        string sql = string.Format("update 部门 set dname=N'{0}' where departID='{1}'",
+                        TextBox_dname.Text, TextBox_did.Text);
+
+                        SqlCommand cmd = new SqlCommand(sql, cn);
+
+                        int effectLine = cmd.ExecuteNonQuery();
+                        if (effectLine == 1)
+                        {
+                            ShowData2();
+                        }
+                        else
+                        {
+                            Label2.Text = "更新失败";
+                        }
+                    }
+                    if (TextBox_de.Text.Trim() != "")
+                    {
+                        string sql = string.Format("update 部门 set director='{0}' where departID='{1}'",
+                        TextBox_de.Text, TextBox_did.Text);
+
+                        SqlCommand cmd = new SqlCommand(sql, cn);
+
+                        int effectLine = cmd.ExecuteNonQuery();
+                        if (effectLine == 1)
+                        {
+                            ShowData2();
+                        }
+                        else
+                        {
+                            Label2.Text = "更新失败";
+                        }
+                    }
+
                 }
                 else
                 {
-                    Label2.Text = "更新失败";
+                    Label2.Text = "代号不能为空";
                 }
-
             }
         }
 
-       
+
+        
     }
 }
+        
