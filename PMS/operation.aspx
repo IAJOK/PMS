@@ -44,6 +44,10 @@
             height: 27px;
             text-align: left;
         }
+        .auto-style13 {
+            color: #0066FF;
+            font-size: x-large;
+        }
         </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -51,6 +55,7 @@
         <A href="Homepage.aspx" class="auto-style6"><span class="auto-style5">首页</span></A>&nbsp;&nbsp;         <A href="WebForm2.aspx" class="auto-style6"><span class="auto-style5">查询操作</span></A>&nbsp;&nbsp;         <A href="operation.aspx" class="auto-style6"><span class="auto-style5">增删改操作</span></A>&nbsp;&nbsp;      
          <A href="ChangeKey2.aspx" class="auto-style6"><span class="auto-style5">修改密码</span></A>&nbsp;&nbsp;         <A href="about.aspx" class="auto-style6"><span class="auto-style5">关于</span></A>
     <hr />
+        <A href="Batchdelete.aspx" class="auto-style6"><span class="auto-style13">批量删除操作</span></A>
     <p>
         <table align="center" class="auto-style2">
             <tr>

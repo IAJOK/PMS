@@ -83,22 +83,44 @@ namespace PMS
             {
                 cn.ConnectionString = sqlconn;
                 cn.Open();
-                if (TextBox_did.Text.Trim() != "" && TextBox_dname.Text.Trim() != "" && TextBox_de.Text.Trim() != "")
+                if (TextBox_did.Text.Trim() != "" && TextBox_dname.Text.Trim() != "" )
                 {
-                    string sqlstr = string.Format("INSERT INTO 部门(departID,dname,director)" +
-                                              "VALUES('{0}',N'{1}','{2}')", TextBox_did.Text, TextBox_dname.Text,
-                  TextBox_de.Text);
-                    SqlCommand cmd = new SqlCommand(sqlstr, cn);
-                    try
+                    if (TextBox_de.Text.Trim() != "")
                     {
-                        System.Diagnostics.Debug.Write("123");
-                        cmd.ExecuteNonQuery();
+                        string sqlstr = string.Format("INSERT INTO 部门(departID,dname,director)" +
+                                                  "VALUES('{0}',N'{1}','{2}')", TextBox_did.Text, TextBox_dname.Text, TextBox_de.Text);
+
+                        SqlCommand cmd = new SqlCommand(sqlstr, cn);
+
+                        try
+                        {
+                            System.Diagnostics.Debug.Write("123");
+                            cmd.ExecuteNonQuery();
+                        }
+                        catch
+                        {
+                            Label2.Text = "请检查是否重复id或者是否存在这名员工";
+                        }
+                        ShowData2();
                     }
-                    catch
+                    else 
                     {
-                        Label2.Text = "请检查是否重复id或者是否存在这名员工";
+                        string sqlstr = string.Format("INSERT INTO 部门(departID,dname)" +
+                                                  "VALUES('{0}',N'{1}')", TextBox_did.Text, TextBox_dname.Text);
+
+                        SqlCommand cmd = new SqlCommand(sqlstr, cn);
+
+                        try
+                        {
+                            System.Diagnostics.Debug.Write("123");
+                            cmd.ExecuteNonQuery();
+                        }
+                        catch
+                        {
+                            Label2.Text = "请检查是否重复id或者是否存在这名员工";
+                        }
+                        ShowData2();
                     }
-                    ShowData2();
                 }
                 else
                 {

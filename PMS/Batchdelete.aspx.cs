@@ -260,13 +260,22 @@ namespace PMS
                         String newsid = key.Values["eid"].ToString();
                         //以下执行删除操作
                         String strSql = "delete from 员工 where eid = '" + newsid + "'";
-                        SqlCommand com = new SqlCommand(strSql, cn);
-                        Int32 num = com.ExecuteNonQuery();
-
-                        if (num > 0)
+                        try
                         {
-                            Label_yerr.Text = "成功删除所选！";
+                            SqlCommand com = new SqlCommand(strSql, cn);
+                            Int32 num = com.ExecuteNonQuery();
+                            if (num > 0)
+                            {
+                                Label_yerr.Text = "成功删除所选！";
+                            }
                         }
+                        catch
+                        {
+                            Label_yerr.Text = "不能删除部门主管！";
+                        }
+
+
+                       
                     }
 
                 }
@@ -275,6 +284,54 @@ namespace PMS
             
         }
 
-        
+        protected void CheckAll2(object sender, EventArgs e)
+        {
+            CheckBox cbAll = (CheckBox)sender;
+            foreach (System.Web.UI.WebControls.GridViewRow gr in this.GridView1.Rows)
+            {
+                CheckBox chk = (CheckBox)gr.FindControl("cbSelect");
+                chk.Checked = cbAll.Checked;
+            }
+        }
+        protected void btnDelete_Click2(object sender, EventArgs e)
+        {
+            foreach (GridViewRow dgi in this.GridView1.Rows)
+            {
+                CheckBox cb = (CheckBox)dgi.FindControl("cbSelect2");
+                if (cb.Checked)
+                {
+                    using (SqlConnection cn = new SqlConnection())
+                    {
+                        cn.ConnectionString = sqlconn;
+                        cn.Open();
+                        Int32 index = dgi.RowIndex;
+                        DataKey key = this.GridView1.DataKeys[index];
+                        String newsid = key.Values["departID"].ToString();
+                        //以下执行删除操作
+                        String strSql = "delete from 部门 where departID = '" + newsid + "'";
+                        try
+                        {
+                            SqlCommand com = new SqlCommand(strSql, cn);
+                            Int32 num = com.ExecuteNonQuery();
+                            if (num > 0)
+                            {
+                                Label_yerr.Text = "成功删除所选！";
+                            }
+                        }
+                        catch
+                        {
+                            Label_yerr.Text = "不能删除有员工存在的部门！";
+                        }
+
+
+
+                    }
+
+                }
+            }
+            this.GridView1.PageIndex = 0;
+
+        }
+
     }
 }
