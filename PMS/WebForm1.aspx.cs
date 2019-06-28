@@ -128,5 +128,133 @@ namespace PMS
 
             }
         }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection cn = new SqlConnection())
+            {
+                ExcelOperator excel = new ExcelOperator();
+                excel.CreateExcel();//创建excel表
+                cn.ConnectionString = sqlconn;
+                cn.Open();
+
+                string eid = Session["eid"].ToString();
+                string cmdtext = string.Format("select * from 员工  where eid ='{0}'",eid);//将编辑好的语句连接好
+
+
+                SqlDataAdapter sda = new SqlDataAdapter(cmdtext, cn);
+
+
+
+                SqlCommand cmd = new SqlCommand(cmdtext, cn);
+                SqlDataAdapter adapter = new SqlDataAdapter(); //实例化数据适配器
+                adapter.SelectCommand = cmd;                   //让适配器执行SELECT命令
+                DataSet dataSet = new DataSet();            //实例化结果数据集
+                int n = adapter.Fill(dataSet);                 //将结果放入数据适配器，返回元祖个数
+                string[] fields = new string[] { "员工代号", "员工姓名", "所属部门", "年龄", "登入密码", "是否管理员" };
+                for (int indexColumn = 0; indexColumn < dataSet.Tables[0].Columns.Count; indexColumn++)
+                {
+                    Range range = excel[1, indexColumn + 1];
+                    range.Value2 = fields[indexColumn];
+                }
+                for (int indexRow = 0; indexRow < dataSet.Tables[0].Rows.Count; indexRow++)
+                {
+                    for (int indexColumn = 0; indexColumn < dataSet.Tables[0].Columns.Count; indexColumn++)
+                    {
+                        Range range = excel[indexRow + 2, indexColumn + 1];
+                        range.Value2 = dataSet.Tables[0].Rows[indexRow][indexColumn];
+                    }
+                }
+            }
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection cn = new SqlConnection())
+            {
+                ExcelOperator excel = new ExcelOperator();
+                excel.CreateExcel();//创建excel表
+                cn.ConnectionString = sqlconn;
+                cn.Open();
+
+                DataSet ds = new DataSet();
+                int first = 0;//用来检测第一个勾选的对象
+                String selectsql = "";//用来编写对应的sql查询语句
+                if (CheckBox_id.Checked)//因为是第一次检测所以不用进行首个勾选的判断
+                {
+
+                    first = 1;
+                    selectsql = selectsql + "departID= '" + TextBox_id.Text + "'";
+
+
+                }
+                if (CheckBox_name.Checked)
+                {
+                    if (first == 0)//修改检测标记和对应语句
+                    {
+                        first = 1;
+                        selectsql = selectsql + "dname= N'" + TextBox_name.Text + "'";
+                    }
+                    else
+                    {
+                        selectsql = selectsql + "and dname= N'" + TextBox_name.Text + "'";
+                    }
+                }
+                if (CheckBox_de.Checked)
+                {
+                    if (first == 0)//修改检测标记和对应语句
+                    {
+                        first = 1;
+                        if (TextBox_de.Text.Equals(""))
+                        {
+                            selectsql = selectsql + "director is null";
+                        }
+                        else
+                        { selectsql = selectsql + "director= '" + TextBox_de.Text + "'"; }
+                    }
+                    else
+                    {
+                        if (TextBox_de.Text.Equals(""))
+                        {
+                            selectsql = selectsql + " and director is null";
+                        }
+                        else
+                        { selectsql = selectsql + "and director= '" + TextBox_de.Text + "'"; }
+
+                    }
+                }
+                if (first == 0)//顺便利用这个标记检测是否至少勾选一个选项，进行报错
+                {
+                    Label_err.Text = "请至少勾选一个选项进行搜索";
+                }
+                string cmdtext = string.Format("select * from 部门 where " + selectsql);//将编辑好的语句连接好
+
+
+                SqlDataAdapter sda = new SqlDataAdapter(cmdtext, cn);
+
+                sda.Fill(ds, "部门");
+
+
+                SqlCommand cmd = new SqlCommand(cmdtext, cn);
+                SqlDataAdapter adapter = new SqlDataAdapter(); //实例化数据适配器
+                adapter.SelectCommand = cmd;                   //让适配器执行SELECT命令
+                DataSet dataSet = new DataSet();            //实例化结果数据集
+                int n = adapter.Fill(dataSet);                 //将结果放入数据适配器，返回元祖个数
+                string[] fields = new string[] { "部门代号", "部门名称", "部门主管" };
+                for (int indexColumn = 0; indexColumn < dataSet.Tables[0].Columns.Count; indexColumn++)
+                {
+                    Range range = excel[1, indexColumn + 1];
+                    range.Value2 = fields[indexColumn];
+                }
+                for (int indexRow = 0; indexRow < dataSet.Tables[0].Rows.Count; indexRow++)
+                {
+                    for (int indexColumn = 0; indexColumn < dataSet.Tables[0].Columns.Count; indexColumn++)
+                    {
+                        Range range = excel[indexRow + 2, indexColumn + 1];
+                        range.Value2 = dataSet.Tables[0].Rows[indexRow][indexColumn];
+                    }
+                }
+            }
+        }
     }
 }

@@ -243,8 +243,91 @@ namespace PMS
                 excel.CreateExcel();//创建excel表
                 cn.ConnectionString = sqlconn;
                 cn.Open();
-                string sqlstr = string.Format("SELECT * FROM 员工 WHERE eid = N'{0}'", TextBox_yid.Text);
-                SqlCommand cmd = new SqlCommand(sqlstr, cn);
+
+                DataSet ds = new DataSet();
+                int first = 0;//用来检测第一个勾选的对象
+                String selectsql = "";//用来编写对应的sql查询语句
+                if (CheckBox_yid.Checked)//因为是第一次检测所以不用进行首个勾选的判断
+                {
+
+                    first = 1;
+                    selectsql = selectsql + "eid= '" + TextBox_yid.Text + "'";
+                }
+                if (CheckBox_yname.Checked)
+                {
+                    if (first == 0)//修改检测标记和对应语句
+                    {
+                        first = 1;
+                        selectsql = selectsql + "ename= N'" + TextBox_yname.Text + "'";
+                    }
+                    else
+                    {
+                        selectsql = selectsql + "and ename= N'" + TextBox_yname.Text + "'";
+                    }
+                }
+                if (CheckBox_dep.Checked)
+                {
+                    if (first == 0)//修改检测标记和对应语句
+                    {
+                        first = 1;
+                        if (DropDownList_dep.Text.Equals(""))
+                        {
+                            selectsql = selectsql + "departID is null";
+                        }
+                        else
+                        { selectsql = selectsql + "departID= '" + DropDownList_dep.Text + "'"; }
+                    }
+                    else
+                    {
+                        if (DropDownList_dep.Text.Equals(""))
+                        {
+                            selectsql = selectsql + " and departID is null";
+                        }
+                        else
+                        { selectsql = selectsql + "and departID= '" + DropDownList_dep.Text + "'"; }
+
+                    }
+                }
+                if (CheckBox_age.Checked)
+                {
+                    if (first == 0)//修改检测标记和对应语句
+                    {
+                        first = 1;
+                        if (TextBox_age.Text.Equals(""))
+                        {
+                            selectsql = selectsql + "age is null";
+                        }
+                        else
+                        { selectsql = selectsql + "age= '" + TextBox_age.Text + "'"; }
+                    }
+                    else
+                    {
+                        if (TextBox_age.Text.Equals(""))
+                        {
+                            selectsql = selectsql + " and age is null";
+                        }
+                        else
+                        { selectsql = selectsql + "and age= '" + TextBox_age.Text + "'"; }
+
+                    }
+                }
+
+
+                if (first == 0)//顺便利用这个标记检测是否至少勾选一个选项，进行报错
+                {
+                    Label_err.Text = "请至少勾选一个选项进行搜索";
+                }
+                
+                    string cmdtext = string.Format("select * from 员工 where " + selectsql);//将编辑好的语句连接好
+
+
+                    SqlDataAdapter sda = new SqlDataAdapter(cmdtext, cn);
+
+                    sda.Fill(ds, "员工");
+                
+                
+                
+                SqlCommand cmd = new SqlCommand(cmdtext, cn);
                 SqlDataAdapter adapter = new SqlDataAdapter(); //实例化数据适配器
                 adapter.SelectCommand = cmd;                   //让适配器执行SELECT命令
                 DataSet dataSet = new DataSet();            //实例化结果数据集
@@ -274,8 +357,66 @@ namespace PMS
                 excel.CreateExcel();//创建excel表
                 cn.ConnectionString = sqlconn;
                 cn.Open();
-                string sqlstr = string.Format("SELECT * FROM 部门 WHERE departID = N'{0}'", TextBox_id.Text);
-                SqlCommand cmd = new SqlCommand(sqlstr, cn);
+
+                DataSet ds = new DataSet();
+                int first = 0;//用来检测第一个勾选的对象
+                String selectsql = "";//用来编写对应的sql查询语句
+                if (CheckBox_id.Checked)//因为是第一次检测所以不用进行首个勾选的判断
+                {
+
+                    first = 1;
+                    selectsql = selectsql + "departID= '" + TextBox_id.Text + "'";
+
+
+                }
+                if (CheckBox_name.Checked)
+                {
+                    if (first == 0)//修改检测标记和对应语句
+                    {
+                        first = 1;
+                        selectsql = selectsql + "dname= N'" + TextBox_name.Text + "'";
+                    }
+                    else
+                    {
+                        selectsql = selectsql + "and dname= N'" + TextBox_name.Text + "'";
+                    }
+                }
+                if (CheckBox_de.Checked)
+                {
+                    if (first == 0)//修改检测标记和对应语句
+                    {
+                        first = 1;
+                        if (TextBox_de.Text.Equals(""))
+                        {
+                            selectsql = selectsql + "director is null";
+                        }
+                        else
+                        { selectsql = selectsql + "director= '" + TextBox_de.Text + "'"; }
+                    }
+                    else
+                    {
+                        if (TextBox_de.Text.Equals(""))
+                        {
+                            selectsql = selectsql + " and director is null";
+                        }
+                        else
+                        { selectsql = selectsql + "and director= '" + TextBox_de.Text + "'"; }
+
+                    }
+                }
+                if (first == 0)//顺便利用这个标记检测是否至少勾选一个选项，进行报错
+                {
+                    Label_err.Text = "请至少勾选一个选项进行搜索";
+                }
+                 string cmdtext = string.Format("select * from 部门 where " + selectsql);//将编辑好的语句连接好
+
+
+                    SqlDataAdapter sda = new SqlDataAdapter(cmdtext, cn);
+
+                    sda.Fill(ds, "部门");
+                
+                
+                SqlCommand cmd = new SqlCommand(cmdtext, cn);
                 SqlDataAdapter adapter = new SqlDataAdapter(); //实例化数据适配器
                 adapter.SelectCommand = cmd;                   //让适配器执行SELECT命令
                 DataSet dataSet = new DataSet();            //实例化结果数据集

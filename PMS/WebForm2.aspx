@@ -76,7 +76,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style9">所属部门：<asp:DropDownList ID="DropDownList_dep" runat="server" DataSourceID="SqlDataSource1" DataTextField="departID" DataValueField="departID">
+                <td class="auto-style9">所属部门：<asp:DropDownList ID="DropDownList_dep" runat="server" DataSourceID="SqlDataSource1" DataTextField="dname" DataValueField="departID">
                     </asp:DropDownList>
                     <asp:CheckBox ID="CheckBox_dep" runat="server" />
                 </td>
@@ -104,7 +104,7 @@
                     <asp:Button ID="Button2" runat="server" Text="打印" OnClick="Button2_Click" />
                     <asp:Button ID="Button5" runat="server" OnClick="Button5_Click" Text="一键打印所有成员" />
 &nbsp;<asp:Label ID="Label_yerr" runat="server" ForeColor="#CC0000"></asp:Label>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [departID] FROM [员工]"></asp:SqlDataSource>
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [部门]"></asp:SqlDataSource>
                     <br />
                     <div class="auto-style12">
                         <asp:GridView ID="GridView1" runat="server"  Width="332px" CellPadding="4" ForeColor="#333333" GridLines="None">
